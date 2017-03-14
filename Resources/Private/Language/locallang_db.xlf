@@ -10,6 +10,12 @@
             <trans-unit id="pages.semantify_plugin_typo3_annotationID">
                 <source>Choose your annotations from the list</source>
             </trans-unit>
+            <trans-unit id="pages.semantify_plugin_typo3_annotationList">
+                 <source>Choose your annotation</source>
+            </trans-unit>
+            <trans-unit id="configuration.description">
+                  <source>Domain API key: Please input your Domain API key to start using semantify.it on your webpage. If you don't have a API key please visit https://www.semantify.it</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
