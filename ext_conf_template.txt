@@ -1,2 +1,3 @@
-# cat=Configuration; type=string; lenght=7; label=Domain API key: Please input your Domain API key to start using semantify.it on your webpage. If you don't have a API key please visit https://www.semantify.it
+# cat=configuration; type=string; lenght=7; label=LLL:EXT:semantify-plugin-typo3/Resources/Private/Language/locallang_db.xlf:configuration.description
 smtf.DomainApiKey =
+image = EXT:ext_icon.png
