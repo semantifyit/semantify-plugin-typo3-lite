@@ -1,40 +1,118 @@
 <?php
 
+/**
+ * Class SemantifyIt
+ */
 class SemantifyIt {
 
     /**
-     * vriable for DomainApiKey
-     *  @param string $domainKey;
+     * variable for websiteApiKey
+     *  @param string $websiteApiKey;
      */
-    private $domainKey;
+    private $websiteApiKey;
 
     /**
-     * getter for DomainApiKey
+     * variable for Url
+     *  @param string $websiteKey;
+     */
+    private $server = "https://staging.semantify.it/api";
+
+
+
+    public function __construct($key = "")
+    {
+        if($key!=""){
+            $this->setWebsiteApiKey($key);
+        }
+    }
+
+
+    /**
+     *
+     * Function responsible for getting stuff from server - physical layer
+     *
+     * @param string $url url adress
+     * @return string return content
+     * @throws Exception
+     */
+    private function get($url){
+
+        $content = @file_get_contents($url);
+
+        if($content===false){
+            throw new Exception('Error getting content from '.$url);
+        }
+
+        if($content==""){
+            throw new Exception('No content received from '.$url);
+        }
+
+        return $content;
+
+    }
+
+    /**
+     *
+     * transport layer for api
+     *
+     * @param $type
+     * @param path
+     * @param array $params
      * @return string
      */
-    public function getDomainKey()
-    {
-        return $this->domainKey;
+    private function transport($type, $path, $params=array()){
+
+        /** url with server and path */
+        $url = $this->server.'/'.$path;
+
+        switch ($type) {
+
+            case "GET":
+                try{
+                    $fullurl = $url.( count($params)==0 ? '' : '?'. http_build_query($params) );
+                    return $this->get($fullurl);
+                }
+                catch (Exception $e) {
+                    echo 'Caught exception: ',  $e->getMessage(), "\n";
+                    return false;
+                }
+
+            break;
+
+        }
     }
 
+
     /**
-     * setter for DomainApiKey
-     * @param string $domainKey
+     * getter for websiteApiKey
+     * @return string
      */
-    public function setDomainKey($domainKey)
+    public function getWebsiteApiKey()
     {
-        $this->domainKey = $domainKey;
+        return $this->websiteApiKey;
     }
 
     /**
-     * returns domain annotations based on DomainApiKey
+     * setter for websiteApiKey
+     * @param string $websiteApiKey
+     */
+    public function setWebsiteApiKey($websiteApiKey)
+    {
+        $this->websiteApiKey = $websiteApiKey;
+    }
+
+    /**
+     * returns website annotations based on websiteApiKey
      *
      * @return array
      */
-    public function getDomainAnnotations(){
-        $annotations = array();
+    public function getAnnotationList(){
 
-        return $annotations;
+        $params["apiKey"] = $this->getWebsiteApiKey();
+        $json = $this->transport("GET", "user/list/",$params);
+
+         return json_decode($json);
+
     }
 
     /**
@@ -42,14 +120,15 @@ class SemantifyIt {
      * returns json-ld anotations based on anotations id
      *
      * @param string $id
-     * @return string $text
+     * @return json
      */
-    public function getAnnotations($id){
+    public function getAnnotation($id){
 
-        $text = "";
+        return $this->transport("GET", "annotation/short/".$id);
 
-        return $text;
     }
+
+
 
 
 }
