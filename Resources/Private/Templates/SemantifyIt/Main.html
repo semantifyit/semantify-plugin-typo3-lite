@@ -1,0 +1,22 @@
+<div class="modal-body" xmlns:f="http://www.w3.org/1999/xhtml">
+    <f:flashMessages />
+
+    <h1>Semantify.it typo3 extension</h1>
+
+
+    <f:form method="post" action="uploadFile" enctype="multipart/form-data" >
+        <div class="form-group">
+            <label>File input</label>
+            <f:form.upload name="file" id="file" />
+            <small id="fileHelp" class="form-text text-muted">Please enter your <b>JSON-LD</b> files here. Or choose one <b>existing</b> JSON file</small><br>
+            <f:form.select class="form-control" name="$annotation" options="{annotations_list}" />
+        </div>
+
+        <!--<span class="glyphicon glyphicon-ok" style="color: #449d44;" aria-hidden="true"></span>-->
+        <f:form.submit class="btn btn-success " value="Save" />
+    </f:form>
+
+    <f:link.action action="listPages" >Test</f:link.action>
+
+</div>
+
