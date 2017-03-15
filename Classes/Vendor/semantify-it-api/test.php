@@ -3,7 +3,7 @@
 
 include_once "SemantifyIt.php";
 
-$sem = new SemantifyIt();
-$sem->setDomainKey("asdsadsa");
+$sem = new SemantifyIt("rkvpGNrix");
 
-echo $sem->getAnnotation("Hyq081kie");
+//echo $sem->getAnnotation("rJL4cNBsg");
+var_dump($sem->getAnnotationList());
