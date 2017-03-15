@@ -9,26 +9,34 @@ class SemantifyItWrapper extends SemantifyIt {
     public function __construct()
     {
         $confArray = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['semantify-plugin-typo3']);
-        $DomainKey = $confArray['smtf.']['DomainApiKey'];
-        $this->setDomainKey($DomainKey);
+        $websiteApiKey = $confArray['smtf.']['WebsiteApiKey'];
+        $this->setWebsiteApiKey($websiteApiKey);
 
     }
 
 
-    public function getDomainAnnotations()
+    /**
+     *
+     * get list of annotations based on key
+     *
+     * @return array
+     */
+    public function getAnnotationList()
     {
-        $test[]=array("LLL:EXT:semantify-plugin-typo3/Resources/Private/Language/locallang_db.xlf:pages.semantify_plugin_typo3_annotationList","");
-        $test[]=array("annotation 1","j8a6sds");
-        $test[]=array("annotation 2","jx0asdj");
-        $test[]=array("Domainkey:".$this->getDomainKey(),"23423423");
+        $annotationList[]=array("LLL:EXT:semantify-plugin-typo3/Resources/Private/Language/locallang_db.xlf:pages.semantify_plugin_typo3_annotationList","");
+        $annotationList[]=array("LLL:EXT:semantify-plugin-typo3/Resources/Private/Language/locallang_db.xlf:pages.semantify_plugin_typo3_annotationListNone","0");
 
-        return $test;
-    }
+        $annotationListFromAPI = parent::getAnnotationList();
 
-    public function getAnnotations($id)
-    {
-        $test = file_get_contents("http://104zbor.skauting.sk/hotel.jsonld");
-        return $test;
+        foreach ($annotationListFromAPI as $item){
+            $annotationList[] = array($item->name, $item->UID);
+        }
+
+        //var_dump($annotationList);
+
+
+
+        return $annotationList;
     }
 
 
