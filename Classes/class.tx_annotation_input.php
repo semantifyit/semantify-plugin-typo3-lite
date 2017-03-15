@@ -36,20 +36,26 @@ class tx_annotation_input
             'uid = '.$currentPageId
         );
 
+        //check entries
         if(!isset($dbEntries) || $GLOBALS['TYPO3_DB']->sql_num_rows($dbEntries) == 0) {
-            // nothing to inject for this page ...
-            //$this->addAnnotation($params['pObj']->content, 'no sql results!');
-
             return;
         } else {
 
             $Semantify = new SemantifyItWrapper();
+            $annotation = "";
 
             foreach ($dbEntries as $res){
-                $annotation = $Semantify->getAnnotation($res[$this->sqlSELECT]);
+
+                $annotation_id = $res[$this->sqlSELECT];
+
+                //if it is field not empty or with 0
+                if(! (($annotation_id=="0") || ($annotation_id==""))){
+                    $annotation = $Semantify->getAnnotation($annotation_id);
+                }
                 break;
             }
-            if($annotation!==0){
+            //if it is field not empty or with 0
+            if( ($annotation!="0") && ($annotation!==false) && ($annotation!="")) {
                 $this->addAnnotation($params['pObj']->content, $annotation);
             }
         }
