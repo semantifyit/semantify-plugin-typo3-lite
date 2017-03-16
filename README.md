@@ -1,29 +1,8 @@
-# README #
+# schemantify plugin #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+### using plugin ###
+manual for this plugin alpha 0.1.0 can be found here [Manual](https://demo.semantify.it/docu/semantify-plugin-typo3/)
 
-### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+### deployment ###
+Dont forget to add [semantify-api-php](https://bitbucket.org/sti2/semantify-api-php) to vendor folder. So structure should looks like this `Classes/Vendor/semantify-api-php/SemantifyIt.php`
