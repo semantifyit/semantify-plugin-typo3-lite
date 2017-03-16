@@ -3,20 +3,19 @@ if (!defined('TYPO3_MODE')) {
     die ('Access denied.');
 }
 
-// Configure new field:
+// Configure new fields:
 $fields = array(
     'semantify_plugin_typo3_annotationID' => array(
         'label' => 'LLL:EXT:semantify-plugin-typo3/Resources/Private/Language/locallang_db.xlf:pages.semantify_plugin_typo3_annotationID',
         'exclude' => 1,
         'config' => array(
             'type' => 'select',
+            'itemsProcFunc' => 'tx_annotation_list->getList',
             'items' => array(
-                array('Nichts', ''),
-                array('Rohre')
+
             ),
         ),
     )
-    // In this example, we assume that the custom checkbox is only used in the original language. So, no need to configure it here.
 );
 
 // Add new field to translated pages:

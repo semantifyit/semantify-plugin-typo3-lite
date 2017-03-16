@@ -3,12 +3,6 @@ if (!defined('TYPO3_MODE')) {
     die ('Access denied.');
 }
 
-
-$extensionClassesPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('semantify-plugin-typo3');
-echo $extensionClassesPath;
-include_once($extensionClassesPath.'/Classes/Domain/Model/SemantifyItWrapper.php');
-
-
 // Configure new fields:
 $fields = array(
     'semantify_plugin_typo3_annotationID' => array(
@@ -23,15 +17,6 @@ $fields = array(
             ),
     )
 );
-
-//$Semantify = new SemantifyItWrapper($GLOBALS);
-//$annotations = $Semantify->getDomainAnnotations();
-
-//debug($annotations, 'Variable name/description', __LINE__, __FILE__);
-
-
-//$fields['semantify_plugin_typo3_annotationID']['config']["items"] = $annotations;
-//$TCA['tt_content']['columns']['section_frame']['config']['itemsProcFunc'] = 'SemantifyItWrapper->main';
 
 
 // Add new fields to pages:
