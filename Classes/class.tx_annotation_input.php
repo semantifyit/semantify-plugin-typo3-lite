@@ -41,19 +41,24 @@ class tx_annotation_input
             return;
         } else {
 
+            //starting wrapper
             $Semantify = new SemantifyItWrapper();
             $annotation = "";
 
+            //get annotations from the database
             foreach ($dbEntries as $res){
-
-                $annotation_id = $res[$this->sqlSELECT];
-
-                //if it is field not empty or with 0
-                if(! (($annotation_id=="0") || ($annotation_id==""))){
-                    $annotation = $Semantify->getAnnotation($annotation_id);
-                }
+                $anno_id = $res[$this->sqlSELECT];
                 break;
             }
+
+            //if it is field not empty or with 0
+            if(! (($anno_id=="0") || ($anno_id==""))){
+                $annotation = $Semantify->getAnnotation($anno_id);
+            }else{
+                $url = \TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('TYPO3_REQUEST_URL');
+                $annotation = $Semantify->getAnnotationByURL($url);
+            }
+
             //if it is field not empty or with 0
             if( ($annotation!="0") && ($annotation!==false) && ($annotation!="")) {
                 $this->addAnnotation($params['pObj']->content, $annotation);
