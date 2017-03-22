@@ -4,7 +4,7 @@ use \TYPO3\CMS\Core\Utility\GeneralUtility;
 class tx_annotation_input
 {
     protected $sqlFROM = 'pages';
-    protected $sqlSELECT = 'semantify_plugin_typo3_annotationID';
+    protected $sqlSELECT = 'semantify_it_annotationID';
 
     function performNotCached(&$params, &$that) {
         if(!$GLOBALS['TSFE']->isINTincScript()) {
