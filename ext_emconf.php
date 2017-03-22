@@ -1,7 +1,7 @@
 <?php
 
 /***************************************************************
- * Extension Manager/Repository config file for ext: "semantify-plugin-typo3"
+ * Extension Manager/Repository config file for ext: "semantify_it"
  *
  *
  * Manual updates:
@@ -14,14 +14,14 @@ $EM_CONF[$_EXTKEY] = array(
     'description' => 'Semantify.it local deployment',
     'category' => 'plugin',
     'author' => 'Richard Dvorsky',
-    'author_company' => 'STI Innsbruck',
-    'author_email' => 'semantify@semantify.it',
+    'author_company' => 'Semantify.it',
+    'author_email' => 'typo3@semantify.it',
     'state' => 'alpha',
     'internal' => '',
-    'uploadfolder' => '1',
+    'uploadfolder' => '0',
     'createDirs' => '',
     'clearCacheOnLoad' => 0,
-    'version' => '0.1.0',
+    'version' => '0.1.2',
     'constraints' => array(
         'depends' => array(
             'typo3' => '6.2',

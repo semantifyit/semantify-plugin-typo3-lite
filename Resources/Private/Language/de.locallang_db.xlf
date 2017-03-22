@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
     <file source-language="en" datatype="plaintext" original="messages" date="2016-06-18T12:03:24Z"
-              product-name="semantify-plugin-typo3" target-language="de">
+              product-name="semantify_it" target-language="de">
         <header/>
         <body>
             <trans-unit id="pages.palette_title">
                 <source>Semantify.it settings</source>
                 <target>Semantify.it Einstellungen</target>
             </trans-unit>
-            <trans-unit id="pages.semantify_plugin_typo3_annotationID">
+            <trans-unit id="pages.semantify_it_annotationID">
                 <source>Choose your annotations from the list</source>
-                <target>Wählen Sie eine annotations aus der liste aus</target>
+                <target>Wählen Sie eine Annotations aus der Liste aus</target>
             </trans-unit>
-            <trans-unit id="pages.semantify_plugin_typo3_annotationList">
+            <trans-unit id="pages.semantify_it_annotationList">
                  <source>Choose your annotation</source>
                  <target>Wählen Sie eine annotation aus</target>
             </trans-unit>
-            <trans-unit id="pages.semantify_plugin_typo3_annotationListNone">
+            <trans-unit id="pages.semantify_it_annotationListNone">
                  <source>None annotation</source>
-                 <target>Keine annotation</target>
+                 <target>Keine Annotation</target>
+            </trans-unit>
+            <trans-unit id="pages.semantify_it_annotationListNew">
+                  <source>Make a new annotation</source>
+                  <source>Mache eine neue Annotation</source>
             </trans-unit>
             <trans-unit id="configuration.description">
                   <source>Website API key: Please input your Website API key to start using semantify.it on your webpage. If you don't have a API key please visit https://www.semantify.it</source>

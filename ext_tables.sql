@@ -4,7 +4,7 @@
 
 CREATE TABLE pages (
 
-  semantify_plugin_typo3_annotationID varchar(255) DEFAULT '' NOT NULL
+  semantify_it_annotationID varchar(255) DEFAULT '' NOT NULL
 
 );
 
@@ -12,5 +12,5 @@ CREATE TABLE pages (
 # Modifying pages_language_overlay table
 #
 CREATE TABLE pages_language_overlay (
-  semantify_plugin_typo3_annotationID varchar(255) DEFAULT '' NOT NULL
+  semantify_it_annotationID varchar(255) DEFAULT '' NOT NULL
 );

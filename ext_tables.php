@@ -42,3 +42,5 @@ if (TYPO3_MODE === 'BE') {
 
 
 include_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY).'Classes/class.tx_annotation_list.php');
+
+//include_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY).'Classes/class.tx_annotation_new.php');
