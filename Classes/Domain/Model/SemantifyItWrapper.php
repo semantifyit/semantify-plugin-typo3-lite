@@ -42,9 +42,9 @@ class SemantifyItWrapper extends SemantifyIt
      */
     public function getAnnotationList()
     {
-        $annotationList[] = array("LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_plugin_typo3_annotationList", "");
-        $annotationList[] = array("LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_plugin_typo3_annotationListNone", "0");
-        //$annotationList[] = array("LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_plugin_typo3_annotationListNew", "1");
+        $annotationList[] = array("LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_annotationList", "");
+        $annotationList[] = array("LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_annotationListNone", "0");
+        //$annotationList[] = array("LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_annotationListNew", "1");
 
         $json = parent::getAnnotationList();
 
