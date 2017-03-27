@@ -101,7 +101,7 @@ class SemantifyItWrapper extends SemantifyIt
 
         $annotationListFromAPI = json_decode($json);
 
-        var_dump($annotationListFromAPI);
+        //var_dump($annotationListFromAPI);
 
         //if there is no error
         if( ($annotationListFromAPI->error=="") &&  ($json!=false)) {
