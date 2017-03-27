@@ -6,7 +6,7 @@ if (!defined('TYPO3_MODE')) {
 // Configure new fields for annotation id
 include_once("Snippets/fields_annotationID.php");
 
-//include_once("Snippets/fields_annotationNew.php");
+include_once("Snippets/fields_annotationNew.php");
 
 
 
@@ -27,5 +27,5 @@ foreach ($fields as $field){
 
 // Add the new palette:
 $GLOBALS['TCA']['pages']['palettes']['semantify_it'] = array(
-    'showitem' => 'semantify_it_annotationID'
+    'showitem' => 'semantify_it_annotationID, stepone'
 );
