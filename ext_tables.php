@@ -42,5 +42,8 @@ if (TYPO3_MODE === 'BE') {
 
 
 include_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY).'Classes/class.tx_annotation_list.php');
+include_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY).'Classes/Controller/SemantifyItWrapperController.php');
+include_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY).'Classes/Domain/Model/SemantifyItWrapper.php');
+include_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY).'Classes/Vendor/semantify-api-php/SemantifyIt.php');
 
 //include_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY).'Classes/class.tx_annotation_new.php');
