@@ -40,6 +40,14 @@
                   <source>Choose annotation subtype</source>
                   <target>Wählen Sie eine Annotation Subtyp aus</target>
             </trans-unit>
+            <trans-unit id="pages.semantify_it_annotationNew_Name">
+                  <source>Name</source>
+                  <target>Name</target>
+            </trans-unit>
+            <trans-unit id="pages.semantify_it_annotationNew_NameChoose">
+                  <source>Plase add a name</source>
+                  <target>Bitte fügen Sie eine Name hinzu.</target>
+            </trans-unit>
             <trans-unit id="configuration.description">
                   <source>Website API key: Please input your Website API key to start using semantify.it on your webpage. If you don't have a API key please visit https://www.semantify.it</source>
                   <target>Website API key: Bitte fügen sie die Website API schlüssel hinzu.</target>
