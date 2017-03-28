@@ -109,9 +109,10 @@
                 return;
             }
 
-            $semantify_text = '\************************ annotated by semantify.it ************************\
- ';
+            $semantify_text = '<!-- Great, right? Created with semantify.it -->
+            ';
 
-            $content = str_replace("</head>", '<script type="application/ld+json">'.$semantify_text . $annotation . '</script>' . '</head>', $content);
+
+            $content = str_replace("</head>", $semantify_text.'<script type="application/ld+json">'. $annotation . '</script>' . '</head>', $content);
         }
     }
