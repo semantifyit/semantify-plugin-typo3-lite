@@ -10,11 +10,11 @@
  ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = array(
-    'title' => 'Semantify.it',
-    'description' => 'Semantify.it local deployment',
+    'title' => 'semantify.it',
+    'description' => 'Deploy your annotations from semantify.it to your typo3 website.',
     'category' => 'plugin',
     'author' => 'Richard Dvorsky',
-    'author_company' => 'Semantify.it',
+    'author_company' => 'semantify.it',
     'author_email' => 'typo3@semantify.it',
     'state' => 'alpha',
     'internal' => '',
