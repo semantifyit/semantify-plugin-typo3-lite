@@ -1,5 +1,7 @@
 <?php
     use \TYPO3\CMS\Core\Utility\GeneralUtility;
+    use \STI\SemantifyIt\Domain\Model\SemantifyItWrapper;
+
 
     class tx_annotation_input
     {
@@ -79,7 +81,7 @@
                     break;
                 }
 
-                
+
                 //if it is field not empty or with 0
                 if (!(($anno_id == "0") || ($anno_id == ""))) {
                     $annotation = $Semantify->getAnnotation($anno_id);
@@ -107,7 +109,9 @@
                 return;
             }
 
-            $content = str_replace('</head>',
-                '<script type="application/ld+json">' . $annotation . '</script>' . '</head>', $content);
+            $semantify_text = '\************************ annotated by semantify.it ************************\
+ ';
+
+            $content = str_replace("</head>", '<script type="application/ld+json">'.$semantify_text . $annotation . '</script>' . '</head>', $content);
         }
     }
