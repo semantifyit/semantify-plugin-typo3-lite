@@ -37,6 +37,12 @@
             <trans-unit id="pages.semantify_it_annotationNew_NameChoose">
                   <source>Plase add a name</source>
             </trans-unit>
+            <trans-unit id="pages.semantify_it_annotationNew_URL">
+                  <source>URL</source>
+            </trans-unit>
+            <trans-unit id="pages.semantify_it_annotationNew_URLChoose">
+                  <source>Plase add a URL</source>
+            </trans-unit>
             <trans-unit id="configuration.description">
                   <source>Website API key: Please input your Website API key to start using semantify.it on your webpage. If you don't have a API key please visit https://www.semantify.it</source>
             </trans-unit>
