@@ -14,7 +14,7 @@
             </trans-unit>
             <trans-unit id="pages.semantify_it_annotationList">
                  <source>Choose your annotation</source>
-                 <target>Wählen Sie eine annotation aus</target>
+                 <target>Wählen Sie eine Annotation aus</target>
             </trans-unit>
             <trans-unit id="pages.semantify_it_annotationListNone">
                  <source>None annotation</source>
@@ -22,7 +22,15 @@
             </trans-unit>
             <trans-unit id="pages.semantify_it_annotationListNew">
                   <source>Make a new annotation</source>
-                  <source>Mache eine neue Annotation</source>
+                  <target>Mach eine neue Annotation</target>
+            </trans-unit>
+            <trans-unit id="pages.semantify_it_annotationNew_StepOne">
+                  <source>Annotation type</source>
+                  <target>Annotation Typ</target>
+            </trans-unit>
+            <trans-unit id="pages.semantify_it_annotationNew_StepOneChoose">
+                  <source>Choose annotation type</source>
+                  <target>Wählen Sie eine Annotation Typ aus</target>
             </trans-unit>
             <trans-unit id="configuration.description">
                   <source>Website API key: Please input your Website API key to start using semantify.it on your webpage. If you don't have a API key please visit https://www.semantify.it</source>
