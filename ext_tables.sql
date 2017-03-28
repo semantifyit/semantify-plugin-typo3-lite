@@ -5,10 +5,10 @@
 CREATE TABLE pages (
 
   semantify_it_annotationID varchar(255) DEFAULT '' NOT NULL
-  semantify_it_annotationNewStepOne varchar(255) DEFAULT '' NOT NULL
-  semantify_it_annotationNewStepTwo varchar(255) DEFAULT '' NOT NULL
-  semantify_it_annotationNewName varchar(255) DEFAULT '' NOT NULL
-  semantify_it_annotationNewURL varchar(255) DEFAULT '' NOT NULL
+  semantify_it_annotationNew_StepOne varchar(255) DEFAULT '' NOT NULL
+  semantify_it_annotationNew_StepTwo varchar(255) DEFAULT '' NOT NULL
+  semantify_it_annotationNew_Name varchar(255) DEFAULT '' NOT NULL
+  semantify_it_annotationNew_URL varchar(255) DEFAULT '' NOT NULL
 
 );
 
@@ -17,8 +17,8 @@ CREATE TABLE pages (
 #
 CREATE TABLE pages_language_overlay (
   semantify_it_annotationID varchar(255) DEFAULT '' NOT NULL
-  semantify_it_annotationNewStepOne varchar(255) DEFAULT '' NOT NULL
-  semantify_it_annotationNewStepTwo varchar(255) DEFAULT '' NOT NULL
-  semantify_it_annotationNewName varchar(255) DEFAULT '' NOT NULL
-  semantify_it_annotationNewURL varchar(255) DEFAULT '' NOT NULL
+  semantify_it_annotationNew_StepOne varchar(255) DEFAULT '' NOT NULL
+  semantify_it_annotationNew_StepTwo varchar(255) DEFAULT '' NOT NULL
+  semantify_it_annotationNew_Name varchar(255) DEFAULT '' NOT NULL
+  semantify_it_annotationNew_URL varchar(255) DEFAULT '' NOT NULL
 );
