@@ -8,9 +8,10 @@ include_once("Snippets/fields_annotationID.php");
 
 //include_once("Snippets/fields_annotationNew.php");
 
+foreach ($fields as $field){
 // Add new field to translated pages:
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages_language_overlay', $fields);
-
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages_language_overlay', $field);
+}
 // Make field visible in the TCEforms:
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
     'pages_language_overlay', // Table semantify_it
