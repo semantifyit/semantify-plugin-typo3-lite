@@ -1,4 +1,5 @@
 <?php
+
 namespace STI\SemantifyIt\Controller;
 
 use \TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -94,7 +95,11 @@ class SemantifyItWrapperController extends ActionController
             "LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_annotationListNone",
             "0"
         );
-        //$annotationList[] = array("LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_annotationListNew", "1");
+
+        $annotationList[] = array(
+            "LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_annotationListNew",
+            "1"
+        );
 
         $json = $this->Sem->getAnnotationList();
 
