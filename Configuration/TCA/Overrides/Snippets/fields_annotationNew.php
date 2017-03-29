@@ -30,6 +30,7 @@ $fields[] = array(
     'semantify_it_annotationNew_StepTwo' => array(
         'label'   => 'LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_annotationNew_StepTwo',
         'exclude' => 1,
+        'displayCond' => 'FIELD:semantify_it_annotationID:=:1',
         'config'  => array(
             'type'  => 'select',
             'items' => array(
@@ -50,6 +51,7 @@ $fields[] = array(
     'semantify_it_annotationNew_Name' => array(
         'l10n_mode' => 'mergeIfNotBlank',
         'exclude'   => 1,
+        'displayCond' => 'FIELD:semantify_it_annotationID:=:1',
         'label'     => 'LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_annotationNew_Name',
         'config'    => array(
             'type' => 'input',
@@ -64,6 +66,7 @@ $fields[] = array(
     'semantify_it_annotationNew_URL' => array(
         'l10n_mode' => 'mergeIfNotBlank',
         'exclude'   => 1,
+        'displayCond' => 'FIELD:semantify_it_annotationID:=:1',
         'label'     => 'LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_annotationNew_URL',
         'config'    => array(
             'type'    => 'input',
