@@ -51,10 +51,9 @@ $fields[] = array(
         'label'     => 'LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_annotationNew_Name',
         'config'    => array(
             'type'        => 'input',
-            'size'        => '20',
+            'size'        => '255',
             'eval'        => 'trim',
-            'placeholder' => '__row|LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_annotationNew_NameChoose',
-        )
+            )
     ),
 );
 
@@ -64,11 +63,26 @@ $fields[] = array(
         'l10n_mode' => 'mergeIfNotBlank',
         'exclude'   => 1,
         'label'     => 'LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_annotationNew_URL',
-        'config'    => array(
-            'type'        => 'input',
-            'size'        => '20',
-            'eval'        => 'trim',
-            'placeholder' => '__row|LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_annotationNew_URLChoose',
-s        )
+        'config' => array(
+            'type' => 'input',
+            'size' => '255',
+            'softref' => 'typolink',
+            'wizards' => array(
+                '_PADDING' => 2,
+                'link' => array(
+                    'type' => 'popup',
+                    'title' => 'Link',
+                    'icon' => 'EXT:example/Resources/Public/Images/FormFieldWizard/wizard_link.gif',
+                    'module' => array(
+                        'name' => 'wizard_element_browser',
+                        'urlParameters' => array(
+                            'mode' => 'wizard'
+                        ) ,
+                    ) ,
+                    'JSopenParams' => 'height=600,width=500,status=0,menubar=0,scrollbars=1'
+                )
+            )
+        )
     ),
 );
+
