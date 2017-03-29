@@ -24,3 +24,5 @@ foreach ($fields as $field){
 $GLOBALS['TCA']['pages_language_overlay']['palettes']['semantify_it'] = array(
     'showitem' => implode(', --linebreak-- ,',$ids)
 );
+
+$GLOBALS['TCA']['pages']['ctrl']['requestUpdate'] .= ',semantify_it_annotationID';
