@@ -25,20 +25,20 @@
                   <target>Mach eine neue Annotation</target>
             </trans-unit>
             <trans-unit id="pages.semantify_it_annotationNew_StepOne">
-                  <source>Annotation type</source>
-                  <target>Annotation Typ</target>
+                  <source>Choose the new annotation type</source>
+                  <target>Wählen Sie die neue Annotation Typ aus</target>
             </trans-unit>
             <trans-unit id="pages.semantify_it_annotationNew_StepOneChoose">
-                  <source>Choose annotation type</source>
-                  <target>Wählen Sie eine Annotation Typ aus</target>
+                  <source>Choose type</source>
+                  <target>Wählen Sie die Typ aus</target>
             </trans-unit>
             <trans-unit id="pages.semantify_it_annotationNew_StepTwo">
-                  <source>Annotation subtype</source>
-                  <target>Annotation Subtyp</target>
+                  <source>Choose the new annotation subtype</source>
+                  <target>Wählen Sie die neue Annotation Subtyp aus</target>
             </trans-unit>
             <trans-unit id="pages.semantify_it_annotationNew_StepTwoChoose">
-                  <source>Choose annotation subtype</source>
-                  <target>Wählen Sie eine Annotation Subtyp aus</target>
+                  <source>Choose subtype</source>
+                  <target>Wählen Sie die Subtyp aus</target>
             </trans-unit>
             <trans-unit id="pages.semantify_it_annotationNew_Name">
                   <source>Name</source>
