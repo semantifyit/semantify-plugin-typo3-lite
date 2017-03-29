@@ -22,5 +22,5 @@ foreach ($fields as $field){
 
 // Add the new palette:
 $GLOBALS['TCA']['pages_language_overlay']['palettes']['semantify_it'] = array(
-    'showitem' => 'semantify_it_annotationID'
+    'showitem' => implode(',',$ids)
 );

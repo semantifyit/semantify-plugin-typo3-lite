@@ -25,7 +25,9 @@ foreach ($fields as $field){
     'after:nav_title' // Insert fields before (default) or after one, or replace a field
 );
 
+
+
 // Add the new palette:
 $GLOBALS['TCA']['pages']['palettes']['semantify_it'] = array(
-    'showitem' => 'semantify_it_annotationID, stepone'
+    'showitem' => implode(',',$ids)
 );
