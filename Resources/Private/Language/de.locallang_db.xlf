@@ -33,8 +33,8 @@
                   <target>Wählen Sie die Typ aus</target>
             </trans-unit>
             <trans-unit id="pages.semantify_it_annotationNew_StepTwo">
-                  <source>Choose the new annotation subtype</source>
-                  <target>Wählen Sie die neue Annotation Subtyp aus</target>
+                  <source>What is this annotation about?</source>
+                  <target>Was ist diese Annotation über?</target>
             </trans-unit>
             <trans-unit id="pages.semantify_it_annotationNew_StepTwoChoose">
                   <source>Choose subtype</source>
