@@ -61,11 +61,11 @@ class SemantifyItWrapperController extends ActionController
      */
     private static function type_sort($a, $b)
     {
-        sort($a->Type);
-        sort($b->Type);
+        sort($a->type);
+        sort($b->type);
 
-        $typeA = implode(" ", $a->Type);
-        $typeB = implode(" ", $b->Type);
+        $typeA = implode(" ", $a->type);
+        $typeB = implode(" ", $b->type);
 
         if ($typeA > $typeB) {
             return -1;
@@ -104,9 +104,9 @@ class SemantifyItWrapperController extends ActionController
 
             return $annotationList;
         }
-
         $annotationListFromAPI = json_decode($json);
 
+        //echo is_array($annotationListFromAPI);
         //var_dump($annotationListFromAPI);
 
         //if there is no error
@@ -125,7 +125,7 @@ class SemantifyItWrapperController extends ActionController
 
                 /* make an identifier wit them */
                 //var_dump($item->Type);
-                $type = implode(" ", $item->Type);
+                $type = implode(" ",$item->type);
                 /* add selection break */
                 if ($last != $type) {
                     $annotationList[] = array($type, '--div--');
