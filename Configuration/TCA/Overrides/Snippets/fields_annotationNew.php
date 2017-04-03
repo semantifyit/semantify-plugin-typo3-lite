@@ -18,8 +18,8 @@ $fields[] = array(
                     "LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_annotationNew_StepOneChoose",
                     ""
                 ),
-                array('Article', 'article'),
-                array('Blog Posting', 'blogPosting'),
+                array('Article', 'Article'),
+                array('Blog Posting', 'BlogPosting'),
             ),
 
         ),
@@ -38,9 +38,9 @@ $fields[] = array(
                     "LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_annotationNew_StepTwoChoose",
                     ""
                 ),
-                array('Event', 'article'),
-                array('Place', 'place'),
-                array('Thing', 'thing'),
+                array('Event', 'Event'),
+                array('Place', 'Place'),
+                array('Thing', 'Thing'),
             ),
         ),
     )
