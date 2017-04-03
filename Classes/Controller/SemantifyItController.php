@@ -29,9 +29,9 @@ class SemantifyItController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      *
      * @param $data
      */
-    private function constructAnnotation($data)
+    private function constructAnnotation($fields)
     {
-        var_dump($data);
+       return \STI\SemantifyIt\Domain\Repository\Article::getAnnotation($fields);
     }
 
 
@@ -63,7 +63,6 @@ class SemantifyItController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
         }
 
         $jsonld = $this->constructAnnotation($data);
-
 
     }
 
