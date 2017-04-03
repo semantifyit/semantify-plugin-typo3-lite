@@ -29,9 +29,13 @@ class SemantifyItController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      *
      * @param $data
      */
-    private function constructAnnotation($fields)
+    private function constructAnnotation($data)
     {
-       return \STI\SemantifyIt\Domain\Repository\Article::getAnnotation($fields);
+        //class choosen by type
+        $class = '\\STI\\SemantifyIt\\Domain\\Repository\\'.$data['type'];
+        $method = 'getAnnotation';
+        //call the class method
+        return call_user_func_array(array($class, $method), array($data));
     }
 
 
@@ -47,12 +51,14 @@ class SemantifyItController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     {
 
         $data = array();
+        $data['@type'] = $fields['semantify_it_annotationNew_StepOne'];
         $data['id'] = $other['id'];
         $data["url"] = $this->createURLfromID($data['id']);
         $data['title'] = $fields['title'];
         $data['nav_title'] = $fields['nav_title'];
         $data['subtitle'] = $fields['subtitle'];
         $data['tstamp'] = $other['tstamp'];
+
 
 
         //we will choose only the necesarry fields for our semantifyit
@@ -62,7 +68,10 @@ class SemantifyItController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
             }
         }
 
+        var_dump($data);
+
         $jsonld = $this->constructAnnotation($data);
+        echo $jsonld;
 
     }
 
