@@ -1,16 +1,26 @@
 <?php
-
 namespace STI\SemantifyIt\Domain\Repository;
 
 
 /**
- * Class SemantifyItWrapper
+ * Class AnnotationTemplate
+ *
+ * @package STI\SemantifyIt\Domain\Repository
  */
 abstract class AnnotationTemplate
 {
 
-    abstract function getAnnotation($fields){}
+    /**
+     * @param $fields
+     * @return mixed
+     */
+    abstract static function getAnnotation($fields);
 
+    /**
+     * @param $fields
+     * @param $special
+     * @return string
+     */
     static function createAnnotation($fields, $special)
     {
         $jsonld = '{
@@ -30,10 +40,19 @@ abstract class AnnotationTemplate
 
 }
 
+/**
+ * Class Article
+ *
+ * @package STI\SemantifyIt\Domain\Repository
+ */
 class Article extends AnnotationTemplate
 {
 
 
+    /**
+     * @param $fields
+     * @return string
+     */
     static function getAnnotation($fields)
     {
 
