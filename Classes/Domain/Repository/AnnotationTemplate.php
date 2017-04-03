@@ -47,8 +47,6 @@ abstract class AnnotationTemplate
  */
 class Article extends AnnotationTemplate
 {
-
-
     /**
      * @param $fields
      * @return string
@@ -58,10 +56,23 @@ class Article extends AnnotationTemplate
 
         $special = '';
 
-        $jsonld = parent::createAnnotation($fields, $special);
+        return parent::createAnnotation($fields, $special);
+    }
 
-        return $jsonld;
+}
 
+class BlogPosting extends AnnotationTemplate
+{
+    /**
+     * @param $fields
+     * @return string
+     */
+    static function getAnnotation($fields)
+    {
+
+        $special = '';
+
+        return parent::createAnnotation($fields, $special);
     }
 
 }
