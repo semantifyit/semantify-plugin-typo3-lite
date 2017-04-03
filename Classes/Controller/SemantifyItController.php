@@ -4,7 +4,6 @@ namespace STI\SemantifyIt\Controller;
 
 use \TYPO3\CMS\Core\Utility\DebugUtility;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Backend\Utility\BackendUtility;
 
 /**
  * SemantifyItController
@@ -12,79 +11,44 @@ use TYPO3\CMS\Backend\Utility\BackendUtility;
 class SemantifyItController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
 
-    public function __construct() {
-        $this->initialize();
-
-    }
-
-
-    public function listAnnotations()
+    /**
+     * SemantifyItController constructor.
+     *
+     * We have to call an fucntion which initialize some classes which are important for getting url
+     */
+    public function __construct()
     {
-        DebugUtility::debug('frontendAction reached', ':)');
-        // $GLOBALS['TSFE'] could be accessed here
-        $this->view->render();
+        $this->initialize();
+        parent::__construct();
     }
 
 
+    /**
+     *
+     * function which construct an annotation
+     *
+     * @param $data
+     */
     private function constructAnnotation($data)
     {
         var_dump($data);
     }
 
 
-
-
+    /**
+     *
+     * function which is called to create and handle anotations
+     *
+     *
+     * @param $fields
+     * @param $other
+     */
     public function createAnnotation($fields, $other)
     {
 
-        // $this->getControllerContext();
-
         $data = array();
         $data['id'] = $other['id'];
-
-        $fullURL = GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
-
-        $cObject = GeneralUtility::makeInstance('TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer');
-        $configurations['returnLast'] = 'url'; // get it as URL
-        $configurations['parameter'] =  $other['id'];
-         $url  = $fullURL.htmlspecialchars($cObject->typolink(NULL, $configurations));
-        var_dump($url);
-
-
-
-        $url = $cObject->getTypoLink_URL('',
-                                         array(
-                                             'parameter'        => $other['id'],
-                                             'forceAbsoluteUrl' => true,
-                                             'returnLast'       => 'url'
-                                         )
-        );
-
-        echo $url."1";
-
-        $url = $cObject->stdWrap_typolink(
-            '',
-            array(
-                'typolink' => array(
-                    'returnLast' => 'url',
-                    'parameter'  => $other['id'],
-                )
-            ));
-        echo $url."2";
-
-        $conf = array(
-            'parameter'        => $other['id'],
-            'forceAbsoluteUrl' => true,
-        );
-
-        echo $cObject->typolink_URL($conf);
-
-        //$url = $cObject->typolink('text',Array('parameter'=>$other['id']));
-        $url = $cObject->getTypoLink_URL($other['id']);
-
-        var_dump($url);
-
-        $data["url"] = $url;
+        $data["url"] = $this->createURLfromID($data['id']);
         $data['title'] = $fields['title'];
         $data['nav_title'] = $fields['nav_title'];
         $data['subtitle'] = $fields['subtitle'];
@@ -104,9 +68,68 @@ class SemantifyItController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     }
 
 
+    /**
+     *
+     * function which take a care of getting url from the string
+     *
+     * @param $id
+     * @return string
+     */
+    private function createURLfromID($id)
+    {
+        $fullURL = GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
+        $cObject = GeneralUtility::makeInstance('TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer');
+        $configurations['returnLast'] = 'url'; // get it as URL
+        $configurations['parameter'] = $id;
+        $url = $fullURL . htmlspecialchars($cObject->typolink(null, $configurations));
+
+        return $url;
+    }
+
+    /**
+     *
+     * function which initializes global variables of typo3
+     *
+     */
     private function initialize()
     {
-      
+        if (!isset($GLOBALS['TSFE'])) {
+
+            $pid = (int)GeneralUtility::_POST('pid');
+            $rootline =
+                \TYPO3\CMS\Backend\Utility\BackendUtility::BEgetRootLine($pid);
+
+            foreach ($rootline as $page) {
+                if ($page['is_siteroot']) {
+                    $id = (int)$page['uid'];
+                    break;
+                }
+            }
+
+            $type = 0;
+
+            if (!is_object($GLOBALS['TT'])) {
+                $GLOBALS['TT'] = new \TYPO3\CMS\Core\TimeTracker\NullTimeTracker;
+                $GLOBALS['TT']->start();
+            }
+
+            $GLOBALS['TSFE'] =
+                GeneralUtility::makeInstance('TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController',
+                                             $GLOBALS['TYPO3_CONF_VARS'], $id, $type);
+            $GLOBALS['TSFE']->connectToDB();
+            $GLOBALS['TSFE']->initFEuser();
+            $GLOBALS['TSFE']->determineId();
+            $GLOBALS['TSFE']->initTemplate();
+            $GLOBALS['TSFE']->getConfigArray();
+
+            if
+            (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('realurl')
+            ) {
+                $host =
+                    \TYPO3\CMS\Backend\Utility\BackendUtility::firstDomainRecord($rootline);
+                $_SERVER['HTTP_HOST'] = $host;
+            }
+        }
 
     }
 
