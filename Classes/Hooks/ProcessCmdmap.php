@@ -15,7 +15,8 @@ class ProcessCmdmap
         \TYPO3\CMS\Core\DataHandling\DataHandler &$pObj
     ){
         echo "POST";
-        $this->hookDebug($status, $table, $id, $fieldArray, $pObj);
+        var_dump($fieldArray);
+        //$this->hookDebug($status, $table, $id, $fieldArray, $pObj);
 
     }
     //public function processDatamap_afterDatabaseOperations($status, $table, $id, array $fieldArray, \TYPO3\CMS\Core\DataHandling\DataHandler &$pObj) {echo 7;}
@@ -30,7 +31,9 @@ class ProcessCmdmap
      */
     public function processDatamap_preProcessFieldArray(array &$fieldArray, $table, $id, \TYPO3\CMS\Core\DataHandling\DataHandler &$pObj) {
         echo "PRE";
-        //$this->hookDebug($status, $table, $id, $fieldArray, $pObj);
+        $this->hookDebug($status, $table, $id, $fieldArray, $pObj);
+
+        var_dump($fieldArray);
 
         ////value of the new annotation
         $newID = $pObj->datamap['pages'][$id]["semantify_it_annotationNew_ID"];
@@ -49,7 +52,7 @@ class ProcessCmdmap
 
             //if it is a new annotation
             if($annotationID=="1"){
-                echo "Post";
+                echo "Post new Annotation";
                 $id =  $semantify->postAnnotation($newAnnotation);
                 $fieldArray["semantify_it_annotationNew_ID"] = $id;
                 $fieldArray["semantify_it_annotationID"] = $id;
@@ -57,7 +60,7 @@ class ProcessCmdmap
 
             //check if there is a new annotation id and it is a same as current annotation choosen one
             if((isset($newID)) && ($newID!="") && ($newID == $annotationID)){
-                echo "Update";
+                echo "Updating Annotation".$newID;
                 $id =  $semantify->updateAnnotation($updateAnnotation, $newID);
                 $fieldArray["semantify_it_annotationNew_ID"] = $id;
                 $fieldArray["semantify_it_annotationID"] = $id;
