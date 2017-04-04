@@ -8,16 +8,9 @@ $ids[] = 'semantify_it_annotationNew_Name';
 $fields[] = array(
     'semantify_it_annotationNew_ID' => array(
         'exclude'   => 1,
-        'displayCond' => array(
-            'OR' => array(
-                'FIELD:semantify_it_annotationID:=:1',
-                'FIELD:semantify_it_annotationNew_ID:=:FIELD:semantify_it_annotationID',
-            ),
-        ),
         'config'    => array(
             'type' => 'input',
             'size' => '10',
-            'eval' => 'trim',
         )
     ),
 );
@@ -76,19 +69,17 @@ $fields[] = array(
 
 $fields[] = array(
     'semantify_it_annotationNew_Name' => array(
-        'l10n_mode' => 'mergeIfNotBlank',
         'exclude'   => 1,
         'displayCond' => array(
             'OR' => array(
                 'FIELD:semantify_it_annotationID:=:1',
-                'FIELD:semantify_it_annotationNew_ID:=:FIELD:semantify_it_annotationID',
-            ),
+                'FIELD:semantify_it_annotationNew_ID:=:FIELD:semantify_it_annotationID'
+            )
         ),
         'label'     => 'LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_annotationNew_Name',
         'config'    => array(
             'type' => 'input',
             'size' => '255',
-            'eval' => 'trim',
         )
     ),
 );
@@ -96,7 +87,6 @@ $fields[] = array(
 
 $fields[] = array(
     'semantify_it_annotationNew_URL' => array(
-        'l10n_mode' => 'mergeIfNotBlank',
         'exclude'   => 1,
         'displayCond' => array(
             'OR' => array(
