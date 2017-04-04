@@ -1,6 +1,8 @@
 <?php
 
-require_once(__DIR__."/Domain/Model/SemantifyItWrapper.php");
+    //require_once(__DIR__."/Domain/Model/SemantifyItWrapper.php");
+    //require_once(__DIR__."/Controller/SemantifyItWrapperController.php");
+    use \STI\SemantifyIt\Controller\SemantifyItWrapperController;
 
 
     class tx_annotation_list {
@@ -12,7 +14,7 @@ require_once(__DIR__."/Domain/Model/SemantifyItWrapper.php");
          */
         function getList($config, $annotations){
 
-            $Semantify = new SemantifyItWrapper();
+            $Semantify = new SemantifyItWrapperController();
             $annotations = $Semantify->getAnnotationList();
 
             // return config
