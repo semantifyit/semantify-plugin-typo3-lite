@@ -205,6 +205,42 @@ class SemantifyItWrapperController extends ActionController
 
 
     /**
+     * @param $annotation
+     * @param $uid
+     * @return mixed
+     */
+    public function updateAnnotation($annotation, $uid){
+        $response =  $this->model->updateAnnotation($annotation, $uid);
+        $id = $this->extractID($response);
+        return $id;
+    }
+
+    /**
+     * function for posting annotation
+     *
+     * @param $annotation
+     * @return mixed
+     */
+    public function postAnnotation($annotation){
+        $response =  $this->model->postAnnotation($annotation);
+        $id = $this->extractID($response);
+        return $id;
+    }
+
+    /**
+     * @param $response
+     * @return mixed
+     */
+    private function extractID($response){
+        $fields = json_decode($response);
+        if(!isset($fields->UID)){
+            return false;
+        }
+        return $fields->UID;
+    }
+
+
+    /**
      *
      * function which is called to create and handle anotations
      *
