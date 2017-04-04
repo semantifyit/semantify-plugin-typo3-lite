@@ -32,7 +32,7 @@ class SemantifyItController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     private function constructAnnotation($data)
     {
         //class choosen by type
-        $class = '\\STI\\SemantifyIt\\Domain\\Repository\\'.$data['type'];
+        $class = '\\STI\\SemantifyIt\\Domain\\Repository\\'.$data['@type'];
         $method = 'getAnnotation';
         //call the class method
         return call_user_func_array(array($class, $method), array($data));
@@ -52,14 +52,17 @@ class SemantifyItController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 
         $data = array();
         $data['@type'] = $fields['semantify_it_annotationNew_StepOne'];
+        $data['@about'] = $fields['semantify_it_annotationNew_StepTwo'];
+        $data['@aboutName'] = $fields['semantify_it_annotationNew_Name'];
+        $data['@aboutURL'] = $fields['semantify_it_annotationNew_URL'];
         $data['id'] = $other['id'];
         $data["url"] = $this->createURLfromID($data['id']);
-        $data['title'] = $fields['title'];
+        $data['headline'] = $fields['title'];
         $data['nav_title'] = $fields['nav_title'];
         $data['subtitle'] = $fields['subtitle'];
         $data['tstamp'] = $other['tstamp'];
-
-
+        $data['name'] = $other['name'];
+        $data['email'] = $other['email'];
 
         //we will choose only the necesarry fields for our semantifyit
         foreach ($fields as $key => $field) {
@@ -68,7 +71,7 @@ class SemantifyItController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
             }
         }
 
-        var_dump($data);
+        //var_dump($data);
 
         $jsonld = $this->constructAnnotation($data);
         echo $jsonld;
