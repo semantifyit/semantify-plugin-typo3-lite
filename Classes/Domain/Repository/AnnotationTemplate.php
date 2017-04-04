@@ -1,6 +1,12 @@
 <?php
 namespace STI\SemantifyIt\Domain\Repository;
 
+use DateTime;
+
+//waldhart
+//waldhartpw
+
+//
 
 /**
  * Class AnnotationTemplate
@@ -16,6 +22,8 @@ abstract class AnnotationTemplate
      */
     abstract static function getAnnotation($fields);
 
+    
+
     /**
      * @param $fields
      * @param $special
@@ -23,13 +31,39 @@ abstract class AnnotationTemplate
      */
     static function createAnnotation($fields, $special)
     {
+        $dateCreated = new DateTime($fields['dateCreated']);
+        $dateModified = new DateTime($fields['dateModified']);
+
+        $author = '';
+        if($fields["name"]!=""){
+            $author ='
+             "author": {
+                "@type": "Person",
+                "name": "'.$fields["name"].'",
+                '.( $fields["email"]!="" ? '"email": "'.$fields["email"].'"' : '').'
+              },';
+        }
+
+        $about = '';
+        if($fields["@about"]!=""){
+            $author ='
+             "about": {
+                "@type": "'.$fields["@about"].'",
+                "name": "'.$fields["@aboutName"].'",
+                '.( $fields["@aboutURL"]!="" ? '"url": "'.$fields["@aboutURL"].'"' : '').'
+              },';
+        }
+
         $jsonld = '{
             "@context": "http://schema.org",    
             "@type": "' . @$fields['@type'] . '",
             "headline": "' . @$fields['headline'] . '",
-            "datePublished": "2015-02-05T08:00:00+08:00",
-            "dateModified": "2015-02-05T09:20:00+08:00",
-            "description": "' . @$fields['headline'] . '",
+            "dateCreated": "'.$dateCreated->format(DateTime::ATOM).'",
+            "datePublished": "'.$dateCreated->format(DateTime::ATOM).'",
+            "dateModified": "'.$dateModified->format(DateTime::ATOM).'",
+            "url": "'.@$fields['url'].'",
+            "description": "' . @$fields['headline'] . '"
+            '.$author.'
             ' . $special . '
         }';
 
