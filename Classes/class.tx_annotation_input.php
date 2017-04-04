@@ -81,11 +81,16 @@
                     break;
                 }
 
+                //option for automatic annotaiton search
+                $confArray = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['semantify_it']);
+                $annotationByURL = $confArray['smtf.']['annotationByURL'];
+
+
 
                 //if it is field not empty or with 0
                 if (!(($anno_id == "0") || ($anno_id == ""))) {
                     $annotation = $Semantify->getAnnotation($anno_id);
-                } else {
+                } else if($annotationByURL==1) {
                     $url = \TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('TYPO3_REQUEST_URL');
                     $annotation = $Semantify->getAnnotationByURL($url);
                 }
