@@ -33,17 +33,21 @@ class ProcessCmdmap
         echo "**************FIELDARRAY**************"."<br>";
         var_dump($fieldArray);
         echo "**************POBJ**************"."<br>";
-        var_dump($pObj);
+        //var_dump($pObj);
         */
+        //var_dump($pObj->BE_USER->user['realName']);
 
-        $other = array();
-        $other['id'] = $id;
-        $other['tstamp'] = $fieldArray['tstamp'];
+        if($table=="pages"){
+            $other = array();
+            $other['id'] = $id;
+            $other['dateModified'] = $fieldArray['tstamp'];
+            $other['dateCreated'] = $pObj->checkValue_currentRecord['crdate'];
+            $other['name']        = $pObj->BE_USER->user['realName'];
+            $other['email']       = $pObj->BE_USER->user['email'];
 
-
-        $semantify = new SemantifyItController();
-        $semantify->createAnnotation($pObj->datamap['pages'][$id], $other);
-
+            $semantify = new SemantifyItController();
+            $semantify->createAnnotation($pObj->datamap['pages'][$id], $other);
+        }
 
     }
 
