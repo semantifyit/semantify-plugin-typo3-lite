@@ -31,8 +31,10 @@ abstract class AnnotationTemplate
      */
     static function createAnnotation($fields, $special)
     {
-        $dateCreated = new DateTime($fields['dateCreated']);
-        $dateModified = new DateTime($fields['dateModified']);
+        $dateCreated = new DateTime();
+        $dateCreated->setTimestamp($fields['dateCreated']);
+        $dateModified = new DateTime();
+        $dateModified->setTimestamp($fields['dateModified']);
 
         $author = '';
         if($fields["name"]!=""){
@@ -41,17 +43,17 @@ abstract class AnnotationTemplate
                 "@type": "Person",
                 "name": "'.$fields["name"].'",
                 '.( $fields["email"]!="" ? '"email": "'.$fields["email"].'"' : '').'
-              },';
+              }';
         }
 
         $about = '';
         if($fields["@about"]!=""){
-            $author ='
+            $about ='
              "about": {
                 "@type": "'.$fields["@about"].'",
                 "name": "'.$fields["@aboutName"].'",
                 '.( $fields["@aboutURL"]!="" ? '"url": "'.$fields["@aboutURL"].'"' : '').'
-              },';
+              }';
         }
 
         $jsonld = '{
@@ -61,10 +63,10 @@ abstract class AnnotationTemplate
             "dateCreated": "'.$dateCreated->format(DateTime::ATOM).'",
             "datePublished": "'.$dateCreated->format(DateTime::ATOM).'",
             "dateModified": "'.$dateModified->format(DateTime::ATOM).'",
-            "url": "'.@$fields['url'].'",
-            "description": "' . @$fields['headline'] . '"
-            '.$author.'
-            ' . $special . '
+            "url": "'.@$fields['url'].'"
+            '.($author!="" ? ",".$author : "").'
+            '.($about!="" ? ",".$about : "").'
+            ' . ($special!="" ? ",".$special : "") . '
         }';
 
         return $jsonld;
