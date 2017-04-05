@@ -6,6 +6,7 @@ use \TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use \TYPO3\CMS\Core\Utility\DebugUtility;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 use \STI\SemantifyIt\Domain\Model\SemantifyItWrapper;
+use \Dmitry\PagePath\PagePathApi;
 
 /**
  * SchemantifyItController
@@ -27,7 +28,6 @@ class SemantifyItWrapperController extends ActionController
     function __construct()
     {
         $this->model = new SemantifyItWrapper();
-        $this->initialize();
     }
 
     /**
@@ -250,10 +250,10 @@ class SemantifyItWrapperController extends ActionController
      */
     public function createAnnotation($fields, $other)
     {
-
+        //$this->initialize($other['id']);
         $data = $this->createData($fields, $other);
         $jsonld = $this->constructAnnotation($data);
-
+        //$this->deinitialize();
         return $jsonld;
     }
 
@@ -275,7 +275,7 @@ class SemantifyItWrapperController extends ActionController
         $data['@aboutName'] = $fields['semantify_it_annotationNew_Name'];
         $data['@aboutURL'] = $fields['semantify_it_annotationNew_URL'];
         $data['id'] = $other['id'];
-        $data["url"] = $this->createURLfromID($data['id']);
+        $data["url"] = PagePathApi::getPagePath($data['id']);
         $data['headline'] = $fields['title'];
         $data['nav_title'] = $fields['nav_title'];
         $data['subtitle'] = $fields['subtitle'];
@@ -304,25 +304,19 @@ class SemantifyItWrapperController extends ActionController
         return $url;
     }
 
+    private function deinitialize(){
+        $GLOBALS['TSFE']=null;
+    }
+
+
     /**
      *
      * function which initializes global variables of typo3
      *
      */
-    private function initialize()
+    private function initialize($id)
     {
         if (!isset($GLOBALS['TSFE'])) {
-
-            $pid = (int)GeneralUtility::_POST('pid');
-            $rootline =
-                \TYPO3\CMS\Backend\Utility\BackendUtility::BEgetRootLine($pid);
-
-            foreach ($rootline as $page) {
-                if ($page['is_siteroot']) {
-                    $id = (int)$page['uid'];
-                    break;
-                }
-            }
 
             $type = 0;
 
@@ -330,6 +324,8 @@ class SemantifyItWrapperController extends ActionController
                 $GLOBALS['TT'] = new \TYPO3\CMS\Core\TimeTracker\NullTimeTracker;
                 $GLOBALS['TT']->start();
             }
+
+            var_dump($GLOBALS);
 
             $GLOBALS['TSFE'] =
                 GeneralUtility::makeInstance('TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController',
@@ -340,13 +336,8 @@ class SemantifyItWrapperController extends ActionController
             $GLOBALS['TSFE']->initTemplate();
             $GLOBALS['TSFE']->getConfigArray();
 
-            if
-            (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('realurl')
-            ) {
-                $host =
-                    \TYPO3\CMS\Backend\Utility\BackendUtility::firstDomainRecord($rootline);
-                $_SERVER['HTTP_HOST'] = $host;
-            }
+            \TYPO3\CMS\Frontend\Page\PageGenerator::pagegenInit();
+
         }
 
     }
