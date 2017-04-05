@@ -8,13 +8,32 @@ $ids[] = 'semantify_it_annotationNew_Name';
 
 $fields[] = array(
     'semantify_it_annotationNew_ID' => array(
-        'label' => "New annotation ID",
+        'label' => "UID of the annotation which was created for this page",
         'exclude'   => 1,
+        'displayCond' => array(
+            'AND' => array(
+                'FIELD:semantify_it_annotationID:=:1',
+                'FIELD:semantify_it_annotationNew_ID:!=:',
+            ),
+        ),
         'config'    => array(
             'type' => 'none'
         )
     ),
 );
+
+
+/*
+$fields[] = array(
+    'semantify_it_annotationNew_ID' => array(
+        'exclude'   => 1,
+        'config'    => array(
+            'type' => 'passthrough'
+        )
+    ),
+);
+*/
+
 
 
 $fields[] = array(
@@ -24,7 +43,7 @@ $fields[] = array(
         'displayCond' => array(
             'OR' => array(
                 'FIELD:semantify_it_annotationID:=:1',
-                'FIELD:semantify_it_annotationNew_ID:=FIELD:semantify_it_annotationID',
+                'FIELD:semantify_it_annotationNew_ID:IN:FIELD:semantify_it_annotationID',
             ),
         ),
         'config'  => array(
@@ -49,7 +68,7 @@ $fields[] = array(
         'displayCond' => array(
             'OR' => array(
                 'FIELD:semantify_it_annotationID:=:1',
-                'FIELD:semantify_it_annotationNew_ID:=FIELD:semantify_it_annotationID',
+                'FIELD:semantify_it_annotationNew_ID:=:FIELD:semantify_it_annotationID',
             ),
         ),
         'config'  => array(
@@ -74,7 +93,7 @@ $fields[] = array(
         'displayCond' => array(
             'OR' => array(
                 'FIELD:semantify_it_annotationID:=:1',
-                'FIELD:semantify_it_annotationNew_ID:=FIELD:semantify_it_annotationID'
+                'FIELD:semantify_it_annotationNew_ID:=:FIELD:semantify_it_annotationID'
             )
         ),
         'label'     => 'LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_annotationNew_Name',
@@ -92,7 +111,7 @@ $fields[] = array(
         'displayCond' => array(
             'OR' => array(
                 'FIELD:semantify_it_annotationID:=:1',
-                'FIELD:semantify_it_annotationNew_ID:=FIELD:semantify_it_annotationID',
+                'FIELD:semantify_it_annotationNew_ID:=:FIELD:semantify_it_annotationID',
             ),
         ),
         'label'     => 'LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_annotationNew_URL',
