@@ -1,4 +1,5 @@
 <?php
+
 namespace STI\SemantifyIt\Hooks;
 
 use STI\SemantifyIt\Controller\SemantifyItWrapperController;
@@ -7,19 +8,90 @@ class ProcessCmdmap
 {
     //unused hooks
     //public function processCmdmap_preProcess($command, $table, $id, $value, \TYPO3\CMS\Core\DataHandling\DataHandler &$pObj) { }
+    //public function processDatamap_afterDatabaseOperations($status, $table, $id, array $fieldArray, \TYPO3\CMS\Core\DataHandling\DataHandler &$pObj) {echo 7;}
+
+
     public function processDatamap_postProcessFieldArray(
         $status,
         $table,
         $id,
         array &$fieldArray,
         \TYPO3\CMS\Core\DataHandling\DataHandler &$pObj
-    ){
-        echo "POST";
-        var_dump($fieldArray);
+    ) {
+
+        // $this->hookDebug($status, $table, $id, $fieldArray, $pObj);
+
+        //var_dump($pObj->datamap['pages'][$id]);
+        //$fieldArray["semantify_it_annotationNew_ID"] = @$pObj->datamap['pages'][$id]["semantify_it_annotationNew_ID"];
         //$this->hookDebug($status, $table, $id, $fieldArray, $pObj);
 
+        if (($status == 'update') && ($table == 'pages')) {
+
+            //echo "PRE";
+            //$this->hookDebug($status, $table, $id, $fieldArray, $pObj);
+            //var_dump($pObj->datamap['pages'][$id]);
+
+            //if we dont have our fields
+            if (!$pObj->datamap['pages'][$id]['semantify_it_continue']) {
+                return;
+            }
+
+            //value of the new annotation
+            $newID = $pObj->checkValue_currentRecord["semantify_it_annotationNew_ID"];
+
+            //value of the current annotation, if not current then value will be from checkValue_currentRecord
+            $annotationID = $pObj->checkValue_currentRecord["semantify_it_annotationID"];
+            if (isset($fieldArray['semantify_it_annotationID'])) {
+                $annotationID = $fieldArray['semantify_it_annotationID'];
+            }
+
+            //if no annotation just quit
+            if ($annotationID == 0) {
+                return;
+            }
+
+            //echo "compare: " . $newID . "=" . $annotationID;
+
+            $other = $this->dataMapping($id, $fieldArray, $pObj);
+
+            $semantify = new SemantifyItWrapperController();
+            $newAnnotation = $semantify->createAnnotation($pObj->datamap['pages'][$id], $other);
+
+            //var_dump($newAnnotation);
+
+            //if it is a new annotation
+            if (($annotationID == "1") && (($newID == "") || ($newID == "0"))) {
+                //echo "Post new Annotation";
+                $uid = $semantify->postAnnotation($newAnnotation);
+                //echo $uid;
+                $fieldArray["semantify_it_annotationNew_ID"] = $uid;
+                $fieldArray["semantify_it_annotationID"] = $uid;
+                $pObj->datamap['pages'][$id]["semantify_it_annotationNew_ID"] = $uid;
+
+            } //check if there is a new annotation id and it is a same as current annotation choosen one
+            else {
+                if ((isset($newID)) && ($newID != "")) {
+                    //echo "Updating Annotation with id: " . $newID;
+                    $uid = $semantify->updateAnnotation($newAnnotation, $newID);
+
+                    //echo "#" . $uid;
+
+                    $fieldArray["semantify_it_annotationNew_ID"] = $uid;
+                    $fieldArray["semantify_it_annotationID"] = $uid;
+                    $pObj->datamap['pages'][$id]["semantify_it_annotationNew_ID"] = $uid;
+                } else {
+
+                    //echo 'nothing choosed';
+
+                }
+            }
+
+            //}
+
+            //var_dump($fieldArray);
+        }
+
     }
-    //public function processDatamap_afterDatabaseOperations($status, $table, $id, array $fieldArray, \TYPO3\CMS\Core\DataHandling\DataHandler &$pObj) {echo 7;}
 
 
     /**
@@ -29,45 +101,30 @@ class ProcessCmdmap
      * @param array                                    $fieldArray
      * @param \TYPO3\CMS\Core\DataHandling\DataHandler $pObj
      */
-    public function processDatamap_preProcessFieldArray(array &$fieldArray, $table, $id, \TYPO3\CMS\Core\DataHandling\DataHandler &$pObj) {
-        echo "PRE";
-        $this->hookDebug($status, $table, $id, $fieldArray, $pObj);
+    public function processDatamap_preProcessFieldArray(
+        array &$fieldArray,
+        $table,
+        $id,
+        \TYPO3\CMS\Core\DataHandling\DataHandler &$pObj
+    ) {
 
-        var_dump($fieldArray);
+       // var_dump($fieldArray);
 
-        ////value of the new annotation
-        $newID = $pObj->datamap['pages'][$id]["semantify_it_annotationNew_ID"];
-        //value of the current annotation
-        $annotationID = $fieldArray["semantify_it_annotationID"];
+        //echo $fieldArray['semantify_it_annotationID'] . "ID";
 
-        $name = $fieldArray["semantify_it_annotationNew_Name"];
-
-        //we make a new annotation if we have table pages and field stepone is not empty
-        if(($table=="pages") && ($name!="")){
-            //if it is a new annotation
-            $other=$this->dataMapping($id, $fieldArray, $pObj);
-
-            $semantify = new SemantifyItWrapperController();
-            $newAnnotation =  $semantify->createAnnotation($pObj->datamap['pages'][$id], $other);
-
-            //if it is a new annotation
-            if($annotationID=="1"){
-                echo "Post new Annotation";
-                $id =  $semantify->postAnnotation($newAnnotation);
-                $fieldArray["semantify_it_annotationNew_ID"] = $id;
-                $fieldArray["semantify_it_annotationID"] = $id;
-            }
-
-            //check if there is a new annotation id and it is a same as current annotation choosen one
-            if((isset($newID)) && ($newID!="") && ($newID == $annotationID)){
-                echo "Updating Annotation".$newID;
-                $id =  $semantify->updateAnnotation($updateAnnotation, $newID);
-                $fieldArray["semantify_it_annotationNew_ID"] = $id;
-                $fieldArray["semantify_it_annotationID"] = $id;
-            }
-
+        $pObj->datamap['pages'][$id]['semantify_it_continue'] = false;
+        //check fields if there is an ID
+        if (
+            isset($fieldArray['semantify_it_annotationID'])
+            && isset($fieldArray['semantify_it_annotationNew_Name'])
+            && isset($fieldArray['semantify_it_annotationNew_URL'])
+            && isset($fieldArray['semantify_it_annotationNew_StepOne'])
+            && isset($fieldArray['semantify_it_annotationNew_StepTwo'])
+        ) {
+            //set to continue true
+            $pObj->datamap['pages'][$id]['semantify_it_continue'] = true;
         }
-
+        //$this->hookDebug($status, $table, $id, $fieldArray, $pObj);
     }
 
     /**
@@ -76,29 +133,33 @@ class ProcessCmdmap
      * @param $pObj
      * @return array
      */
-    private function dataMapping(&$id, &$fieldArray, &$pObj){
+    private function dataMapping(&$id, &$fieldArray, &$pObj)
+    {
+
+
         $other = array();
         $other['id'] = $id;
         $other['dateModified'] = $fieldArray['tstamp'];
         $other['dateCreated'] = $pObj->checkValue_currentRecord['crdate'];
-        $other['name']        = $pObj->BE_USER->user['realName'];
-        $other['email']       = $pObj->BE_USER->user['email'];
+        $other['name'] = $pObj->BE_USER->user['realName'];
+        $other['email'] = $pObj->BE_USER->user['email'];
 
         return $other;
     }
 
-    private function hookDebug(&$status, &$table, &$id, &$fieldArray, &$pObj){
+    private function hookDebug(&$status, &$table, &$id, &$fieldArray, &$pObj)
+    {
 
-      echo "**************ID**************"."<br>";
-      var_dump($id);
-      echo "**************TABLE**************"."<br>";
-      var_dump($table);
-      echo "**************STATUS**************"."<br>";
-      var_dump($status);
-      echo "**************FIELDARRAY**************"."<br>";
-      var_dump($fieldArray);
-      echo "**************POBJ**************"."<br>";
-      var_dump($pObj);
+        echo "**************ID**************" . "<br>";
+        var_dump($id);
+        echo "**************TABLE**************" . "<br>";
+        var_dump($table);
+        echo "**************STATUS**************" . "<br>";
+        var_dump($status);
+        echo "**************FIELDARRAY**************" . "<br>";
+        var_dump($fieldArray);
+        echo "**************POBJ**************" . "<br>";
+        var_dump($pObj);
 
     }
 
