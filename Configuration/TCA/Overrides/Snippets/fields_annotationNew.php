@@ -1,16 +1,17 @@
 <?php
-
+$ids[] = 'semantify_it_annotationNew_ID';
 $ids[] = 'semantify_it_annotationNew_StepOne';
 $ids[] = 'semantify_it_annotationNew_StepTwo';
 $ids[] = 'semantify_it_annotationNew_URL';
 $ids[] = 'semantify_it_annotationNew_Name';
 
+
 $fields[] = array(
     'semantify_it_annotationNew_ID' => array(
+        'label' => "New annotation ID",
         'exclude'   => 1,
         'config'    => array(
-            'type' => 'input',
-            'size' => '10',
+            'type' => 'none'
         )
     ),
 );
@@ -23,7 +24,7 @@ $fields[] = array(
         'displayCond' => array(
             'OR' => array(
                 'FIELD:semantify_it_annotationID:=:1',
-                'FIELD:semantify_it_annotationNew_ID:=:FIELD:semantify_it_annotationID',
+                'FIELD:semantify_it_annotationNew_ID:=FIELD:semantify_it_annotationID',
             ),
         ),
         'config'  => array(
@@ -48,7 +49,7 @@ $fields[] = array(
         'displayCond' => array(
             'OR' => array(
                 'FIELD:semantify_it_annotationID:=:1',
-                'FIELD:semantify_it_annotationNew_ID:=:FIELD:semantify_it_annotationID',
+                'FIELD:semantify_it_annotationNew_ID:=FIELD:semantify_it_annotationID',
             ),
         ),
         'config'  => array(
@@ -73,7 +74,7 @@ $fields[] = array(
         'displayCond' => array(
             'OR' => array(
                 'FIELD:semantify_it_annotationID:=:1',
-                'FIELD:semantify_it_annotationNew_ID:=:FIELD:semantify_it_annotationID'
+                'FIELD:semantify_it_annotationNew_ID:=FIELD:semantify_it_annotationID'
             )
         ),
         'label'     => 'LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_annotationNew_Name',
@@ -91,7 +92,7 @@ $fields[] = array(
         'displayCond' => array(
             'OR' => array(
                 'FIELD:semantify_it_annotationID:=:1',
-                'FIELD:semantify_it_annotationNew_ID:=:FIELD:semantify_it_annotationID',
+                'FIELD:semantify_it_annotationNew_ID:=FIELD:semantify_it_annotationID',
             ),
         ),
         'label'     => 'LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_annotationNew_URL',
