@@ -14,4 +14,6 @@ include_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKE
 include_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY).'Classes/Domain/Model/SemantifyItWrapper.php');
 include_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY).'Classes/Domain/Repository/AnnotationTemplate.php');
 include_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY).'Classes/Vendor/semantify-api-php/SemantifyIt.php');
+include_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY).'Classes/Vendor/typo3-pagepath/pagepath.php');
+
 //include_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY).'Classes/class.tx_annotation_new.php');
