@@ -8,7 +8,7 @@ $ids[] = 'semantify_it_annotationNew_Name';
 
 $fields[] = array(
     'semantify_it_annotationNew_ID' => array(
-        'label' => "UID of the annotation which was created for this page",
+        'label' => "LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_annotationNew_ID",
         'exclude'   => 1,
         'displayCond' => array(
             'AND' => array(
@@ -21,19 +21,6 @@ $fields[] = array(
         )
     ),
 );
-
-
-/*
-$fields[] = array(
-    'semantify_it_annotationNew_ID' => array(
-        'exclude'   => 1,
-        'config'    => array(
-            'type' => 'passthrough'
-        )
-    ),
-);
-*/
-
 
 
 $fields[] = array(
