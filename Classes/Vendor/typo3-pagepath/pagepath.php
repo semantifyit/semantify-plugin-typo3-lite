@@ -33,14 +33,20 @@ class PagePathApi
             $data['parameters'] = $parameters;
         }
         $siteUrl = self::getSiteUrl($pageId);
+
         if ($siteUrl) {
-            $url = $siteUrl . 'index.php?eID=pagepath&data=' . base64_encode(json_encode($data));
+            $url = $siteUrl . 'index.php?eID=semantify_it&data=' . base64_encode(json_encode($data));
             // Send TYPO3 cookies as this may affect path generation
             $headers = array(
                 'Cookie: fe_typo_user=' . $_COOKIE['fe_typo_user']
             );
+
+            //var_dump($url);
+
             $result = GeneralUtility::getURL($url, false, $headers);
             $urlParts = parse_url($result);
+            //echo "test2";
+            //var_dump($urlParts);
             if (!is_array($urlParts)) {
                 // filter_var is too strict (for example, underscore characters make it fail). So we use parse_url here for a quick check.
                 $result = '';
@@ -53,6 +59,7 @@ class PagePathApi
         } else {
             $result = '';
         }
+
 
         return $result;
     }
