@@ -22,3 +22,7 @@ $TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_annotationNew_URL'
 $GLOBALS ['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][''] = 'STI\SemantifyIt\Hooks\ProcessCmdmap';
 $GLOBALS ['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processCmdmapClass'][''] = 'STI\SemantifyIt\Hooks\ProcessCmdmap';
 
+
+//url support
+$GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include'][$_EXTKEY] = 'EXT:' . $_EXTKEY . '/Classes/Vendor/typo3-pagepath/class.tx_pagepath_resolver.php';
+
