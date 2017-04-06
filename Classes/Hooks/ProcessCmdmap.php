@@ -71,7 +71,7 @@ class ProcessCmdmap
             } //check if there is a new annotation id and it is a same as current annotation choosen one
             elseif ((isset($newID)) && ($newID != "") && ($newID != "0")) {
 
-               // echo "Updating Annotation with id: " . $newID;
+               //echo "Updating Annotation with id: " . $newID;
                 $uid = $semantify->updateAnnotation($newAnnotation, $newID);
 
                 //echo "#" . $uid;
@@ -81,7 +81,7 @@ class ProcessCmdmap
                 $pObj->datamap['pages'][$id]["semantify_it_annotationNew_ID"] = $uid;
             } else {
 
-               // echo 'nothing choosed';
+                //echo 'nothing choosed';
 
             }
 
