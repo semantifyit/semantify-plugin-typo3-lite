@@ -6,10 +6,7 @@ if (!defined('TYPO3_MODE')) {
 // Configure new fields for annotation id
 include_once("Snippets/fields_annotationID.php");
 
-//include_once("Snippets/fields_annotationNew.php");
-
-
-
+include_once("Snippets/fields_annotationNew.php");
 
 // Add new fields to pages:
 foreach ($fields as $field){
@@ -25,7 +22,11 @@ foreach ($fields as $field){
     'after:nav_title' // Insert fields before (default) or after one, or replace a field
 );
 
+
+
 // Add the new palette:
 $GLOBALS['TCA']['pages']['palettes']['semantify_it'] = array(
-    'showitem' => 'semantify_it_annotationID'
+    'showitem' => implode(', --linebreak-- ,',$ids)
 );
+
+$GLOBALS['TCA']['pages']['ctrl']['requestUpdate'] .= ',semantify_it_annotationID';
