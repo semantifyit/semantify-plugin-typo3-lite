@@ -37,10 +37,11 @@ class PagePathApi
         if ($siteUrl) {
             $url = $siteUrl . 'index.php?eID=semantify_it&data=' . base64_encode(json_encode($data));
             // Send TYPO3 cookies as this may affect path generation
+            //var_dump($_COOKIE);
             $headers = array(
-                'Cookie: fe_typo_user=' . $_COOKIE['fe_typo_user']
+                'Cookie: be_typo_user=' . $_COOKIE['be_typo_user']
             );
-
+            //var_dump($headers);
             //var_dump($url);
 
             $result = GeneralUtility::getURL($url, false, $headers);
