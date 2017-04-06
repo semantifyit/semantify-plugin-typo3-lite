@@ -21,8 +21,8 @@
                  <target>Keine Annotation</target>
             </trans-unit>
             <trans-unit id="pages.semantify_it_annotationListNew">
-                  <source>Make a new annotation</source>
-                  <target>Mach eine neue Annotation</target>
+                  <source>Make a or edit new annotation</source>
+                  <target>Mach oder änder eine neue Annotation</target>
             </trans-unit>
             <trans-unit id="pages.semantify_it_annotationNew_StepOne">
                   <source>Choose the new annotation type</source>

@@ -17,7 +17,7 @@
                  <source>None annotation</source>
             </trans-unit>
             <trans-unit id="pages.semantify_it_annotationListNew">
-                  <source>Make a new annotation</source>
+                  <source>Make or edit a new annotation</source>
             </trans-unit>
             <trans-unit id="pages.semantify_it_annotationNew_StepOne">
                   <source>Choose the new annotation type</source>
