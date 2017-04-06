@@ -58,7 +58,7 @@ class ProcessCmdmap
             $newAnnotation = $semantify->createAnnotation($pObj->datamap['pages'][$id], $other);
 
             //var_dump($newAnnotation);
-
+            //var_dump($newID);
             //if it is a new annotation
             if (($annotationID == "1") && (($newID == "") || ($newID == "0"))) {
                 //echo "Post new Annotation";
@@ -69,22 +69,22 @@ class ProcessCmdmap
                 $pObj->datamap['pages'][$id]["semantify_it_annotationNew_ID"] = $uid;
 
             } //check if there is a new annotation id and it is a same as current annotation choosen one
-            else {
-                if ((isset($newID)) && ($newID != "")) {
-                    //echo "Updating Annotation with id: " . $newID;
-                    $uid = $semantify->updateAnnotation($newAnnotation, $newID);
+            elseif ((isset($newID)) && ($newID != "") && ($newID != "0")) {
 
-                    //echo "#" . $uid;
+               // echo "Updating Annotation with id: " . $newID;
+                $uid = $semantify->updateAnnotation($newAnnotation, $newID);
 
-                    $fieldArray["semantify_it_annotationNew_ID"] = $uid;
-                    $fieldArray["semantify_it_annotationID"] = $uid;
-                    $pObj->datamap['pages'][$id]["semantify_it_annotationNew_ID"] = $uid;
-                } else {
+                //echo "#" . $uid;
 
-                    //echo 'nothing choosed';
+                $fieldArray["semantify_it_annotationNew_ID"] = $uid;
+                $fieldArray["semantify_it_annotationID"] = $uid;
+                $pObj->datamap['pages'][$id]["semantify_it_annotationNew_ID"] = $uid;
+            } else {
 
-                }
+               // echo 'nothing choosed';
+
             }
+
 
             //}
 
@@ -108,7 +108,7 @@ class ProcessCmdmap
         \TYPO3\CMS\Core\DataHandling\DataHandler &$pObj
     ) {
 
-       // var_dump($fieldArray);
+        // var_dump($fieldArray);
 
         //echo $fieldArray['semantify_it_annotationID'] . "ID";
 
