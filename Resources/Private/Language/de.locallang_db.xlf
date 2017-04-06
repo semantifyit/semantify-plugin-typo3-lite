@@ -12,6 +12,10 @@
                 <source>Choose your annotations from the list</source>
                 <target>Wählen Sie eine Annotations aus der Liste aus</target>
             </trans-unit>
+            <trans-unit id="pages.semantify_it_annotationNew_ID">
+                <source>UID of the annotation which was created for this page</source>
+                <target>Annotation UID die Webseite gemacht habe</target>
+            </trans-unit>
             <trans-unit id="pages.semantify_it_annotationList">
                  <source>Choose your annotation</source>
                  <target>Wählen Sie eine Annotation aus</target>

@@ -10,6 +10,9 @@
             <trans-unit id="pages.semantify_it_annotationID">
                 <source>Choose your annotations from the list</source>
             </trans-unit>
+            <trans-unit id="pages.semantify_it_annotationNew_ID">
+                <source>UID of the annotation which was created for this page</source>
+            </trans-unit>
             <trans-unit id="pages.semantify_it_annotationList">
                  <source>Choose your annotation</source>
             </trans-unit>
