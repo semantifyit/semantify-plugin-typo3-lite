@@ -286,62 +286,6 @@ class SemantifyItWrapperController extends ActionController
     }
 
 
-    /**
-     *
-     * function which take a care of getting url from the string
-     *
-     * @param $id
-     * @return string
-     */
-    private function createURLfromID($id)
-    {
-        $fullURL = GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
-        $cObject = GeneralUtility::makeInstance('TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer');
-        $configurations['returnLast'] = 'url'; // get it as URL
-        $configurations['parameter'] = $id;
-        $url = $fullURL . htmlspecialchars($cObject->typolink(null, $configurations));
-
-        return $url;
-    }
-
-    private function deinitialize(){
-        $GLOBALS['TSFE']=null;
-    }
-
-
-    /**
-     *
-     * function which initializes global variables of typo3
-     *
-     */
-    private function initialize($id)
-    {
-        if (!isset($GLOBALS['TSFE'])) {
-
-            $type = 0;
-
-            if (!is_object($GLOBALS['TT'])) {
-                $GLOBALS['TT'] = new \TYPO3\CMS\Core\TimeTracker\NullTimeTracker;
-                $GLOBALS['TT']->start();
-            }
-
-            var_dump($GLOBALS);
-
-            $GLOBALS['TSFE'] =
-                GeneralUtility::makeInstance('TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController',
-                                             $GLOBALS['TYPO3_CONF_VARS'], $id, $type);
-            $GLOBALS['TSFE']->connectToDB();
-            $GLOBALS['TSFE']->initFEuser();
-            $GLOBALS['TSFE']->determineId();
-            $GLOBALS['TSFE']->initTemplate();
-            $GLOBALS['TSFE']->getConfigArray();
-
-            \TYPO3\CMS\Frontend\Page\PageGenerator::pagegenInit();
-
-        }
-
-    }
-
 
 
 }
