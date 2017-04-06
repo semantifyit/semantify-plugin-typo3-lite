@@ -6,12 +6,14 @@ if (!defined('TYPO3_MODE')) {
 // Configure new fields for annotation id
 include_once("Snippets/fields_annotationID.php");
 
-//include_once("Snippets/fields_annotationNew.php");
+include_once("Snippets/fields_annotationNew.php");
 
+// Add new fields to pages:
 foreach ($fields as $field){
 // Add new field to translated pages:
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages_language_overlay', $field);
 }
+
 // Make field visible in the TCEforms:
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
     'pages_language_overlay', // Table semantify_it
@@ -22,5 +24,7 @@ foreach ($fields as $field){
 
 // Add the new palette:
 $GLOBALS['TCA']['pages_language_overlay']['palettes']['semantify_it'] = array(
-    'showitem' => 'semantify_it_annotationID'
+    'showitem' => implode(', --linebreak-- ,',$ids)
 );
+
+$GLOBALS['TCA']['pages_language_overlay']['ctrl']['requestUpdate'] .= ',semantify_it_annotationID';
