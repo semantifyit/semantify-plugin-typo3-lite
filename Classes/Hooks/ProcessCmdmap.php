@@ -21,18 +21,18 @@ class ProcessCmdmap
 
         // $this->hookDebug($status, $table, $id, $fieldArray, $pObj);
 
-        //var_dump($pObj->datamap['pages'][$id]);
-        //$fieldArray["semantify_it_annotationNew_ID"] = @$pObj->datamap['pages'][$id]["semantify_it_annotationNew_ID"];
+        //var_dump($pObj->datamap[$table][$id]);
+        //$fieldArray["semantify_it_annotationNew_ID"] = @$pObj->datamap[$table][$id]["semantify_it_annotationNew_ID"];
         //$this->hookDebug($status, $table, $id, $fieldArray, $pObj);
 
-        if (($status == 'update') && ($table == 'pages')) {
+        if (($status == 'update') && (($table == 'pages')||($table == 'pages_language_overlay'))) {
 
             //echo "PRE";
             //$this->hookDebug($status, $table, $id, $fieldArray, $pObj);
-            //var_dump($pObj->datamap['pages'][$id]);
+            //var_dump($pObj->datamap[$table][$id]);
 
             //if we dont have our fields
-            if (!$pObj->datamap['pages'][$id]['semantify_it_continue']) {
+            if (!$pObj->datamap[$table][$id]['semantify_it_continue']) {
                 return;
             }
 
@@ -55,7 +55,7 @@ class ProcessCmdmap
             $other = $this->dataMapping($id, $fieldArray, $pObj);
 
             $semantify = new SemantifyItWrapperController();
-            $newAnnotation = $semantify->createAnnotation($pObj->datamap['pages'][$id], $other);
+            $newAnnotation = $semantify->createAnnotation($pObj->datamap[$table][$id], $other);
 
             //var_dump($newAnnotation);
             //var_dump($newID);
@@ -66,7 +66,7 @@ class ProcessCmdmap
                 //echo $uid;
                 $fieldArray["semantify_it_annotationNew_ID"] = $uid;
                 $fieldArray["semantify_it_annotationID"] = $uid;
-                $pObj->datamap['pages'][$id]["semantify_it_annotationNew_ID"] = $uid;
+                $pObj->datamap[$table][$id]["semantify_it_annotationNew_ID"] = $uid;
 
             } //check if there is a new annotation id and it is a same as current annotation choosen one
             elseif ((isset($newID)) && ($newID != "") && ($newID != "0")) {
@@ -78,7 +78,7 @@ class ProcessCmdmap
 
                 $fieldArray["semantify_it_annotationNew_ID"] = $uid;
                 $fieldArray["semantify_it_annotationID"] = $uid;
-                $pObj->datamap['pages'][$id]["semantify_it_annotationNew_ID"] = $uid;
+                $pObj->datamap[$table][$id]["semantify_it_annotationNew_ID"] = $uid;
             } else {
 
                 //echo 'nothing choosed';
@@ -112,7 +112,7 @@ class ProcessCmdmap
 
         //echo $fieldArray['semantify_it_annotationID'] . "ID";
 
-        $pObj->datamap['pages'][$id]['semantify_it_continue'] = false;
+        $pObj->datamap[$table][$id]['semantify_it_continue'] = false;
         //check fields if there is an ID
         if (
             isset($fieldArray['semantify_it_annotationID'])
@@ -122,7 +122,7 @@ class ProcessCmdmap
             && isset($fieldArray['semantify_it_annotationNew_StepTwo'])
         ) {
             //set to continue true
-            $pObj->datamap['pages'][$id]['semantify_it_continue'] = true;
+            $pObj->datamap[$table][$id]['semantify_it_continue'] = true;
         }
         //$this->hookDebug($status, $table, $id, $fieldArray, $pObj);
     }
