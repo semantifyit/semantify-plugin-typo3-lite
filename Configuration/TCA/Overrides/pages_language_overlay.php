@@ -4,7 +4,7 @@ if (!defined('TYPO3_MODE')) {
 }
 
 // Configure new fields for annotation id
-include_once("Snippets/fields_annotationID.php");
+//include_once("Snippets/fields_annotationID.php");
 
 include_once("Snippets/fields_annotationNew.php");
 
