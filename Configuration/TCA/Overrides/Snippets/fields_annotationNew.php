@@ -1,20 +1,17 @@
 <?php
+
 $ids[] = 'semantify_it_separate_annotationNew_ID';
 $ids[] = 'semantify_it_separate_annotationNew_StepOne';
 $ids[] = 'semantify_it_separate_annotationNew_StepTwo';
 $ids[] = 'semantify_it_separate_annotationNew_URL';
 $ids[] = 'semantify_it_separate_annotationNew_Name';
 
-
 $fields[] = array(
     'semantify_it_separate_annotationNew_ID' => array(
-        'label' => "LLL:EXT:semantify_it_separate/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_separate_annotationNew_ID",
+        'label' => "LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_separate_annotationNew_ID",
         'exclude'   => 1,
         'displayCond' => array(
-            'AND' => array(
-                'FIELD:semantify_it_separate_annotationID:=:1',
-                'FIELD:semantify_it_separate_annotationNew_ID:!=:',
-            ),
+                'FIELD:semantify_it_annotationNew_ID:!=:12',
         ),
         'config'    => array(
             'type' => 'none'
@@ -27,12 +24,6 @@ $fields[] = array(
     'semantify_it_separate_annotationNew_StepOne' => array(
         'label'   => 'LLL:EXT:semantify_it_separate/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_separate_annotationNew_StepOne',
         'exclude' => 1,
-        'displayCond' => array(
-            'OR' => array(
-                'FIELD:semantify_it_separate_annotationID:=:1',
-                'FIELD:semantify_it_separate_annotationNew_ID:IN:FIELD:semantify_it_separate_annotationID',
-            ),
-        ),
         'config'  => array(
             'type'  => 'select',
             'items' => array(
@@ -52,12 +43,6 @@ $fields[] = array(
     'semantify_it_separate_annotationNew_StepTwo' => array(
         'label'   => 'LLL:EXT:semantify_it_separate/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_separate_annotationNew_StepTwo',
         'exclude' => 1,
-        'displayCond' => array(
-            'OR' => array(
-                'FIELD:semantify_it_separate_annotationID:=:1',
-                'FIELD:semantify_it_separate_annotationNew_ID:=:FIELD:semantify_it_separate_annotationID',
-            ),
-        ),
         'config'  => array(
             'type'  => 'select',
             'items' => array(
@@ -77,12 +62,6 @@ $fields[] = array(
 $fields[] = array(
     'semantify_it_separate_annotationNew_Name' => array(
         'exclude'   => 1,
-        'displayCond' => array(
-            'OR' => array(
-                'FIELD:semantify_it_separate_annotationID:=:1',
-                'FIELD:semantify_it_separate_annotationNew_ID:=:FIELD:semantify_it_separate_annotationID'
-            )
-        ),
         'label'     => 'LLL:EXT:semantify_it_separate/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_separate_annotationNew_Name',
         'config'    => array(
             'type' => 'input',
@@ -95,12 +74,6 @@ $fields[] = array(
 $fields[] = array(
     'semantify_it_separate_annotationNew_URL' => array(
         'exclude'   => 1,
-        'displayCond' => array(
-            'OR' => array(
-                'FIELD:semantify_it_separate_annotationID:=:1',
-                'FIELD:semantify_it_separate_annotationNew_ID:=:FIELD:semantify_it_separate_annotationID',
-            ),
-        ),
         'label'     => 'LLL:EXT:semantify_it_separate/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_separate_annotationNew_URL',
         'config'    => array(
             'type'    => 'input',
