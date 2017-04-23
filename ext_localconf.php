@@ -7,7 +7,7 @@ $TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_separate_annotatio
 $TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_separate_annotationNew_StepTwo';
 $TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_separate_annotationNew_Name';
 $TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_separate_annotationNew_URL';
-
+$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_separate_annotationNew_RAW';
 
 
 //$GLOBALS['TSFE']->set_no_cache();
