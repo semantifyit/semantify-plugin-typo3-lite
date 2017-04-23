@@ -32,7 +32,7 @@ class SemantifyItWrapper extends SemantifyIt
             return;
         }
 
-        $confArray = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['semantify_it']);
+        $confArray = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['semantify_it_separate']);
         $websiteApiKey = $confArray['smtf.']['WebsiteApiKey'];
         $this->setWebsiteApiKey($websiteApiKey);
     }

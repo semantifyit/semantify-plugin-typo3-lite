@@ -1,7 +1,7 @@
 <?php
 
 /***************************************************************
- * Extension Manager/Repository config file for ext: "semantify_it"
+ * Extension Manager/Repository config file for ext: "semantify_it_separate"
  *
  *
  * Manual updates:
@@ -10,7 +10,7 @@
  ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = array(
-    'title' => 'semantify.it',
+    'title' => 'semantify.it separate',
     'description' => 'Deploy your annotations from semantify.it to your typo3 website.',
     'category' => 'plugin',
     'author' => 'semantify.it',

@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
     <file source-language="en" datatype="plaintext" original="messages" date="2016-06-18T12:03:24Z"
-          product-name="semantify_it">
+          product-name="semantify_it_separate">
         <header/>
         <body>
             <trans-unit id="pages.palette_title">
                 <source>semantify.it settings</source>
             </trans-unit>
-            <trans-unit id="pages.semantify_it_annotationID">
+            <trans-unit id="pages.semantify_it_separate_annotationID">
                 <source>Choose your annotations from the list</source>
             </trans-unit>
-            <trans-unit id="pages.semantify_it_annotationNew_ID">
+            <trans-unit id="pages.semantify_it_separate_annotationNew_ID">
                 <source>UID of the annotation which was created for this page</source>
             </trans-unit>
-            <trans-unit id="pages.semantify_it_annotationList">
+            <trans-unit id="pages.semantify_it_separate_annotationList">
                  <source>Choose your annotation</source>
             </trans-unit>
-            <trans-unit id="pages.semantify_it_annotationListNone">
+            <trans-unit id="pages.semantify_it_separate_annotationListNone">
                  <source>None annotation</source>
             </trans-unit>
-            <trans-unit id="pages.semantify_it_annotationListNew">
+            <trans-unit id="pages.semantify_it_separate_annotationListNew">
                   <source>Make or edit a new annotation</source>
             </trans-unit>
-            <trans-unit id="pages.semantify_it_annotationNew_StepOne">
+            <trans-unit id="pages.semantify_it_separate_annotationNew_StepOne">
                   <source>Choose the new annotation type</source>
             </trans-unit>
-            <trans-unit id="pages.semantify_it_annotationNew_StepOneChoose">
+            <trans-unit id="pages.semantify_it_separate_annotationNew_StepOneChoose">
                   <source>Choose type</source>
             </trans-unit>
-            <trans-unit id="pages.semantify_it_annotationNew_StepTwo">
+            <trans-unit id="pages.semantify_it_separate_annotationNew_StepTwo">
                   <source>What is this annotation about?</source>
             </trans-unit>
-            <trans-unit id="pages.semantify_it_annotationNew_StepTwoChoose">
+            <trans-unit id="pages.semantify_it_separate_annotationNew_StepTwoChoose">
                   <source>Choose subtype</source>
             </trans-unit>
-            <trans-unit id="pages.semantify_it_annotationNew_Name">
+            <trans-unit id="pages.semantify_it_separate_annotationNew_Name">
                   <source>Name</source>
             </trans-unit>
-            <trans-unit id="pages.semantify_it_annotationNew_NameChoose">
+            <trans-unit id="pages.semantify_it_separate_annotationNew_NameChoose">
                   <source>Plase add a name</source>
             </trans-unit>
-            <trans-unit id="pages.semantify_it_annotationNew_URL">
+            <trans-unit id="pages.semantify_it_separate_annotationNew_URL">
                   <source>URL</source>
             </trans-unit>
-            <trans-unit id="pages.semantify_it_annotationNew_URLChoose">
+            <trans-unit id="pages.semantify_it_separate_annotationNew_URLChoose">
                   <source>Plase add a URL</source>
             </trans-unit>
             <trans-unit id="configuration.description">

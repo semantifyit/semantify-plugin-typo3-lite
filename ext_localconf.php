@@ -1,12 +1,12 @@
 <?php
 if (!defined ('TYPO3_MODE')) die ('Access denied.');
 
-$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_annotationID';
-$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_annotationNew_ID';
-$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_annotationNew_StepOne';
-$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_annotationNew_StepTwo';
-$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_annotationNew_Name';
-$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_annotationNew_URL';
+$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_separate_annotationID';
+$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_separate_annotationNew_ID';
+$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_separate_annotationNew_StepOne';
+$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_separate_annotationNew_StepTwo';
+$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_separate_annotationNew_Name';
+$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_separate_annotationNew_URL';
 
 
 
