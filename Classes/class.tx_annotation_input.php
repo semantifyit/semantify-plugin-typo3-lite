@@ -6,7 +6,9 @@
     class tx_annotation_input
     {
         protected $sqlFROM = 'pages';
-        protected $sqlSELECT = 'semantify_it_separate_annotationID';
+        protected $sqlSELECT = 'semantify_it_separate_annotationID, semantify_it_separate_annotationNew_RAW';
+        protected $sqlID = 'semantify_it_separate_annotationID';
+        protected $sqlRAW = 'semantify_it_separate_annotationNew_RAW';
 
         function performNotCached(&$params, &$that)
         {
@@ -75,7 +77,8 @@
                 foreach ($dbEntries as $res) {
 
 
-                    $anno_id = $res[$this->sqlSELECT];
+                    $anno_id = $res[$this->sqlID];
+                    $anno_RAW = $res[$this->sqlRAW];
 
 
                     break;
@@ -83,13 +86,15 @@
 
                 //option for automatic annotaiton search
                 $confArray = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['semantify_it_separate']);
-                $annotationByURL = $confArray['smtf.']['annotationByURL'];
 
+                $annotationByURL = $confArray['smtf.']['annotationByURL'];
+                $annotationByURL=0;
 
 
                 //if it is field not empty or with 0
                 if (!(($anno_id == "0") || ($anno_id == ""))) {
-                    $annotation = $Semantify->getAnnotation($anno_id);
+                    //$annotation = $Semantify->getAnnotation($anno_id);
+                    $annotation = $anno_RAW;
                 } else if($annotationByURL==1) {
                     $url = \TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('TYPO3_REQUEST_URL');
                     $annotation = $Semantify->getAnnotationByURL($url);
