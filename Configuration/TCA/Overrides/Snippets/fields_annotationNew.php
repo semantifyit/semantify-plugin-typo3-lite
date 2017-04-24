@@ -5,16 +5,14 @@ $ids[] = 'semantify_it_separate_annotationNew_StepOne';
 $ids[] = 'semantify_it_separate_annotationNew_StepTwo';
 $ids[] = 'semantify_it_separate_annotationNew_URL';
 $ids[] = 'semantify_it_separate_annotationNew_Name';
+$ids[] = 'semantify_it_separate_annotationNew_RAW';
 
 $fields[] = array(
     'semantify_it_separate_annotationNew_ID' => array(
         'label' => "LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_separate_annotationNew_ID",
         'exclude'   => 1,
-        'displayCond' => array(
-                'FIELD:semantify_it_annotationNew_ID:!=:12',
-        ),
         'config'    => array(
-            'type' => 'none'
+            'type' => 'passthrough'
         )
     ),
 );
