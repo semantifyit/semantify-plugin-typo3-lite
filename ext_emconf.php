@@ -10,8 +10,8 @@
  ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = array(
-    'title' => 'semantify.it separate',
-    'description' => 'Deploy your annotations from semantify.it to your typo3 website.',
+    'title' => 'semantify.it Lite',
+    'description' => 'Deploy annotations on your typo3 website.',
     'category' => 'plugin',
     'author' => 'semantify.it',
     'author_company' => 'semantify.it',
