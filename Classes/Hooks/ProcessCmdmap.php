@@ -19,7 +19,7 @@ class ProcessCmdmap
         \TYPO3\CMS\Core\DataHandling\DataHandler &$pObj
     ) {
 
-        // $this->hookDebug($status, $table, $id, $fieldArray, $pObj);
+        $this->hookDebug($status, $table, $id, $fieldArray, $pObj);
 
         //var_dump($pObj->datamap[$table][$id]);
         //$fieldArray["semantify_it_separate_annotationNew_ID"] = @$pObj->datamap[$table][$id]["semantify_it_separate_annotationNew_ID"];
@@ -39,6 +39,7 @@ class ProcessCmdmap
             //value of the new annotation
             $newID = $pObj->checkValue_currentRecord["semantify_it_separate_annotationNew_ID"];
 
+            /*
             //value of the current annotation, if not current then value will be from checkValue_currentRecord
             $annotationID = $pObj->checkValue_currentRecord["semantify_it_separate_annotationID"];
             if (isset($fieldArray['semantify_it_separate_annotationID'])) {
@@ -49,6 +50,7 @@ class ProcessCmdmap
             if ($annotationID == 0) {
                 return;
             }
+            */
 
             //echo "compare: " . $newID . "=" . $annotationID;
 
@@ -58,26 +60,36 @@ class ProcessCmdmap
             $newAnnotation = $semantify->createAnnotation($pObj->datamap[$table][$id], $other);
 
             //var_dump($newAnnotation);
+            //if annotation was not created due missing fields
+            if($newAnnotation==false){
+                return false;
+            }
+
+            //var_dump($newAnnotation);
             //var_dump($newID);
+
             //if it is a new annotation
-            if (($annotationID == "1") && (($newID == "") || ($newID == "0"))) {
+            if (($annotationID == "") && (($newID == "") || ($newID == "0"))) {
                 //echo "Post new Annotation";
                 $uid = $semantify->postAnnotation($newAnnotation);
                 //echo $uid;
                 $fieldArray["semantify_it_separate_annotationNew_ID"] = $uid;
                 $fieldArray["semantify_it_separate_annotationID"] = $uid;
+                $fieldArray["semantify_it_separate_annotationNew_RAW"] = $newAnnotation;
+
                 $pObj->datamap[$table][$id]["semantify_it_separate_annotationNew_ID"] = $uid;
 
             } //check if there is a new annotation id and it is a same as current annotation choosen one
             elseif ((isset($newID)) && ($newID != "") && ($newID != "0")) {
 
-               //echo "Updating Annotation with id: " . $newID;
+                //echo "Updating Annotation with id: " . $newID;
                 $uid = $semantify->updateAnnotation($newAnnotation, $newID);
 
                 //echo "#" . $uid;
 
                 $fieldArray["semantify_it_separate_annotationNew_ID"] = $uid;
                 $fieldArray["semantify_it_separate_annotationID"] = $uid;
+                $fieldArray["semantify_it_separate_annotationNew_RAW"] = $newAnnotation;
                 $pObj->datamap[$table][$id]["semantify_it_separate_annotationNew_ID"] = $uid;
             } else {
 
@@ -115,8 +127,7 @@ class ProcessCmdmap
         $pObj->datamap[$table][$id]['semantify_it_separate_continue'] = false;
         //check fields if there is an ID
         if (
-            isset($fieldArray['semantify_it_separate_annotationID'])
-            && isset($fieldArray['semantify_it_separate_annotationNew_Name'])
+            isset($fieldArray['semantify_it_separate_annotationNew_Name'])
             && isset($fieldArray['semantify_it_separate_annotationNew_URL'])
             && isset($fieldArray['semantify_it_separate_annotationNew_StepOne'])
             && isset($fieldArray['semantify_it_separate_annotationNew_StepTwo'])
