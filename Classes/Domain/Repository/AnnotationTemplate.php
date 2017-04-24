@@ -31,6 +31,11 @@ abstract class AnnotationTemplate
      */
     static function createAnnotation($fields, $special)
     {
+        if($fields['@type']==""){
+            return false;
+        }
+
+
         $dateCreated = new DateTime();
         $dateCreated->setTimestamp($fields['dateCreated']);
         $dateModified = new DateTime();
