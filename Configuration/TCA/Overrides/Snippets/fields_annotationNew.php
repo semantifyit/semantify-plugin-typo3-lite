@@ -1,15 +1,15 @@
 <?php
 
-$ids[] = 'semantify_it_separate_annotationNew_ID';
-$ids[] = 'semantify_it_separate_annotationNew_StepOne';
-$ids[] = 'semantify_it_separate_annotationNew_StepTwo';
-$ids[] = 'semantify_it_separate_annotationNew_URL';
-$ids[] = 'semantify_it_separate_annotationNew_Name';
-$ids[] = 'semantify_it_separate_annotationNew_RAW';
+$ids[] = 'semantify_it_lite_annotationNew_ID';
+$ids[] = 'semantify_it_lite_annotationNew_StepOne';
+$ids[] = 'semantify_it_lite_annotationNew_StepTwo';
+$ids[] = 'semantify_it_lite_annotationNew_URL';
+$ids[] = 'semantify_it_lite_annotationNew_Name';
+$ids[] = 'semantify_it_lite_annotationNew_RAW';
 
 $fields[] = array(
-    'semantify_it_separate_annotationNew_ID' => array(
-        'label' => "LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_separate_annotationNew_ID",
+    'semantify_it_lite_annotationNew_ID' => array(
+        'label' => "LLL:EXT:semantify_it/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_lite_annotationNew_ID",
         'exclude'   => 1,
         'config'    => array(
             'type' => 'passthrough'
@@ -19,14 +19,14 @@ $fields[] = array(
 
 
 $fields[] = array(
-    'semantify_it_separate_annotationNew_StepOne' => array(
-        'label'   => 'LLL:EXT:semantify_it_separate/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_separate_annotationNew_StepOne',
+    'semantify_it_lite_annotationNew_StepOne' => array(
+        'label'   => 'LLL:EXT:semantify_it_lite/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_lite_annotationNew_StepOne',
         'exclude' => 1,
         'config'  => array(
             'type'  => 'select',
             'items' => array(
                 array(
-                    "LLL:EXT:semantify_it_separate/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_separate_annotationNew_StepOneChoose",
+                    "LLL:EXT:semantify_it_lite/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_lite_annotationNew_StepOneChoose",
                     ""
                 ),
                 array('Article', 'Article'),
@@ -38,14 +38,14 @@ $fields[] = array(
 );
 
 $fields[] = array(
-    'semantify_it_separate_annotationNew_StepTwo' => array(
-        'label'   => 'LLL:EXT:semantify_it_separate/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_separate_annotationNew_StepTwo',
+    'semantify_it_lite_annotationNew_StepTwo' => array(
+        'label'   => 'LLL:EXT:semantify_it_lite/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_lite_annotationNew_StepTwo',
         'exclude' => 1,
         'config'  => array(
             'type'  => 'select',
             'items' => array(
                 array(
-                    "LLL:EXT:semantify_it_separate/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_separate_annotationNew_StepTwoChoose",
+                    "LLL:EXT:semantify_it_lite/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_lite_annotationNew_StepTwoChoose",
                     ""
                 ),
                 array('Event', 'Event'),
@@ -58,9 +58,9 @@ $fields[] = array(
 
 
 $fields[] = array(
-    'semantify_it_separate_annotationNew_Name' => array(
+    'semantify_it_lite_annotationNew_Name' => array(
         'exclude'   => 1,
-        'label'     => 'LLL:EXT:semantify_it_separate/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_separate_annotationNew_Name',
+        'label'     => 'LLL:EXT:semantify_it_lite/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_lite_annotationNew_Name',
         'config'    => array(
             'type' => 'input',
             'size' => '255',
@@ -70,9 +70,9 @@ $fields[] = array(
 
 
 $fields[] = array(
-    'semantify_it_separate_annotationNew_URL' => array(
+    'semantify_it_lite_annotationNew_URL' => array(
         'exclude'   => 1,
-        'label'     => 'LLL:EXT:semantify_it_separate/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_separate_annotationNew_URL',
+        'label'     => 'LLL:EXT:semantify_it_lite/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_lite_annotationNew_URL',
         'config'    => array(
             'type'    => 'input',
             'size'    => '255',

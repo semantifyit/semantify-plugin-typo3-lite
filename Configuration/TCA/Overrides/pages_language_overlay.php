@@ -16,15 +16,15 @@ foreach ($fields as $field){
 
 // Make field visible in the TCEforms:
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
-    'pages_language_overlay', // Table semantify_it_separate
-    '--palette--;LLL:EXT:semantify_it_separate/Resources/Private/Language/locallang_db.xlf:pages.palette_title;semantify_it_separate', // Field list to add
+    'pages_language_overlay', // Table semantify_it_lite
+    '--palette--;LLL:EXT:semantify_it_lite/Resources/Private/Language/locallang_db.xlf:pages.palette_title;semantify_it_lite', // Field list to add
     '', // List of specific types to add the field list to. (If empty, all type entries are affected)
     'after:nav_title' // Insert fields before (default) or after one, or replace a field
 );
 
 // Add the new palette:
-$GLOBALS['TCA']['pages_language_overlay']['palettes']['semantify_it_separate'] = array(
+$GLOBALS['TCA']['pages_language_overlay']['palettes']['semantify_it_lite'] = array(
     'showitem' => implode(', --linebreak-- ,',$ids)
 );
 
-$GLOBALS['TCA']['pages_language_overlay']['ctrl']['requestUpdate'] .= ',semantify_it_separate_annotationID';
+$GLOBALS['TCA']['pages_language_overlay']['ctrl']['requestUpdate'] .= ',semantify_it_lite_annotationID';

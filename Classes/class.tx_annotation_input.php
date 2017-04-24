@@ -6,9 +6,9 @@
     class tx_annotation_input
     {
         protected $sqlFROM = 'pages';
-        protected $sqlSELECT = 'semantify_it_separate_annotationID, semantify_it_separate_annotationNew_RAW';
-        protected $sqlID = 'semantify_it_separate_annotationID';
-        protected $sqlRAW = 'semantify_it_separate_annotationNew_RAW';
+        protected $sqlSELECT = 'semantify_it_lite_annotationID, semantify_it_lite_annotationNew_RAW';
+        protected $sqlID = 'semantify_it_lite_annotationID';
+        protected $sqlRAW = 'semantify_it_lite_annotationNew_RAW';
 
         function performNotCached(&$params, &$that)
         {
@@ -85,7 +85,7 @@
                 }
 
                 //option for automatic annotaiton search
-                $confArray = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['semantify_it_separate']);
+                $confArray = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['semantify_it_lite']);
 
                 $annotationByURL = $confArray['smtf.']['annotationByURL'];
                 $annotationByURL=0;
