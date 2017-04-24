@@ -247,6 +247,7 @@ class SemantifyItWrapperController extends ActionController
      *
      * @param $fields
      * @param $other
+     * @return string, boolean
      */
     public function createAnnotation($fields, $other)
     {
