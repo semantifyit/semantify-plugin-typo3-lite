@@ -41,7 +41,7 @@
                   <target>Was ist diese Annotation über?</target>
             </trans-unit>
             <trans-unit id="pages.semantify_it_lite_annotationNew_StepTwoChoose">
-                  <source>Choose subtype</source>
+                  <source>Choose type</source>
                   <target>Wählen Sie die Subtyp aus</target>
             </trans-unit>
             <trans-unit id="pages.semantify_it_lite_annotationNew_Name">
