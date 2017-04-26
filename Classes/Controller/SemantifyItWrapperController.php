@@ -128,16 +128,16 @@ class SemantifyItWrapperController extends ActionController
     public function getAnnotationList()
     {
         $annotationList[] = array(
-            "LLL:EXT:semantify_it_lite/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_lite_annotationList",
+            "LLL:EXT:mayrhofen_annotator/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_lite_annotationList",
             ""
         );
         $annotationList[] = array(
-            "LLL:EXT:semantify_it_lite/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_lite_annotationListNone",
+            "LLL:EXT:mayrhofen_annotator/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_lite_annotationListNone",
             "0"
         );
 
         $annotationList[] = array(
-            "LLL:EXT:semantify_it_lite/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_lite_annotationListNew",
+            "LLL:EXT:mayrhofen_annotator/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_lite_annotationListNew",
             "1"
         );
 
@@ -271,10 +271,10 @@ class SemantifyItWrapperController extends ActionController
         $data = array();
         $data['dateModified'] = $other['dateModified'];
         $data['dateCreated'] = $other['dateCreated'];
-        $data['@type'] = $fields['semantify_it_lite_annotationNew_StepOne'];
-        $data['@about'] = $fields['semantify_it_lite_annotationNew_StepTwo'];
-        $data['@aboutName'] = $fields['semantify_it_lite_annotationNew_Name'];
-        $data['@aboutURL'] = $fields['semantify_it_lite_annotationNew_URL'];
+        $data['@type'] = $fields['mayrhofen_annotator_annotationNew_StepOne'];
+        $data['@about'] = $fields['mayrhofen_annotator_annotationNew_StepTwo'];
+        $data['@aboutName'] = $fields['mayrhofen_annotator_annotationNew_Name'];
+        $data['@aboutURL'] = $fields['mayrhofen_annotator_annotationNew_URL'];
         $data['id'] = $other['id'];
         $data["url"] = PagePathApi::getPagePath($data['id']);
         $data['headline'] = $fields['title'];

@@ -1,6 +1,6 @@
 <?php
 
-$extensionClassesPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('semantify_it_lite') . 'Classes/';
+$extensionClassesPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('mayrhofen_annotator') . 'Classes/';
 
 $default = array(
     'SemantifyItWrapper' => $extensionClassesPath . 'Domain/Model/SemantifyItWrapper.php',

@@ -1,13 +1,13 @@
 <?php
 if (!defined ('TYPO3_MODE')) die ('Access denied.');
 
-$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_lite_annotationID';
-$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_lite_annotationNew_ID';
-$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_lite_annotationNew_StepOne';
-$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_lite_annotationNew_StepTwo';
-$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_lite_annotationNew_Name';
-$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_lite_annotationNew_URL';
-$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',semantify_it_lite_annotationNew_RAW';
+$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',mayrhofen_annotator_annotationID';
+$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',mayrhofen_annotator_annotationNew_ID';
+$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',mayrhofen_annotator_annotationNew_StepOne';
+$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',mayrhofen_annotator_annotationNew_StepTwo';
+$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',mayrhofen_annotator_annotationNew_Name';
+$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',mayrhofen_annotator_annotationNew_URL';
+$TYPO3_CONF_VARS['FE']['pageOverlayFields'] .= ',mayrhofen_annotator_annotationNew_RAW';
 
 
 //$GLOBALS['TSFE']->set_no_cache();

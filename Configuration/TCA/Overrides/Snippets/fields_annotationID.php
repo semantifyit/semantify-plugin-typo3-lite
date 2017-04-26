@@ -1,9 +1,9 @@
 <?php
 
-$ids[] = 'semantify_it_lite_annotationID';
+$ids[] = 'mayrhofen_annotator_annotationID';
 
 $fields[] = array(
-    'semantify_it_lite_annotationID' => array(
+    'mayrhofen_annotator_annotationID' => array(
         'exclude' => 1,
         'config' => array(
             'type' => 'passthrough',

@@ -1,7 +1,7 @@
 <?php
 
 /***************************************************************
- * Extension Manager/Repository config file for ext: "semantify_it_lite"
+ * Extension Manager/Repository config file for ext: "mayrhofen_annotator"
  *
  *
  * Manual updates:

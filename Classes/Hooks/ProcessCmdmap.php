@@ -22,7 +22,7 @@ class ProcessCmdmap
         //$this->hookDebug($status, $table, $id, $fieldArray, $pObj);
 
         //var_dump($pObj->datamap[$table][$id]);
-        //$fieldArray["semantify_it_lite_annotationNew_ID"] = @$pObj->datamap[$table][$id]["semantify_it_lite_annotationNew_ID"];
+        //$fieldArray["mayrhofen_annotator_annotationNew_ID"] = @$pObj->datamap[$table][$id]["semantify_it_lite_annotationNew_ID"];
         //$this->hookDebug($status, $table, $id, $fieldArray, $pObj);
 
         if (($status == 'update') && (($table == 'pages')||($table == 'pages_language_overlay'))) {
@@ -32,18 +32,18 @@ class ProcessCmdmap
             //var_dump($pObj->datamap[$table][$id]);
 
             //if we dont have our fields
-            if (!$pObj->datamap[$table][$id]['semantify_it_lite_continue']) {
+            if (!$pObj->datamap[$table][$id]['mayrhofen_annotator_continue']) {
                 return;
             }
 
             //value of the new annotation
-            $newID = $pObj->checkValue_currentRecord["semantify_it_lite_annotationNew_ID"];
+            $newID = $pObj->checkValue_currentRecord["mayrhofen_annotator_annotationNew_ID"];
 
             /*
             //value of the current annotation, if not current then value will be from checkValue_currentRecord
-            $annotationID = $pObj->checkValue_currentRecord["semantify_it_lite_annotationID"];
-            if (isset($fieldArray['semantify_it_lite_annotationID'])) {
-                $annotationID = $fieldArray['semantify_it_lite_annotationID'];
+            $annotationID = $pObj->checkValue_currentRecord["mayrhofen_annotator_annotationID"];
+            if (isset($fieldArray['mayrhofen_annotator_annotationID'])) {
+                $annotationID = $fieldArray['mayrhofen_annotator_annotationID'];
             }
 
             //if no annotation just quit
@@ -73,11 +73,11 @@ class ProcessCmdmap
                 //echo "Post new Annotation";
                 $uid = $semantify->postAnnotation($newAnnotation);
                 //echo $uid;
-                $fieldArray["semantify_it_lite_annotationNew_ID"] = $uid;
-                $fieldArray["semantify_it_lite_annotationID"] = $uid;
-                $fieldArray["semantify_it_lite_annotationNew_RAW"] = $newAnnotation;
+                $fieldArray["mayrhofen_annotator_annotationNew_ID"] = $uid;
+                $fieldArray["mayrhofen_annotator_annotationID"] = $uid;
+                $fieldArray["mayrhofen_annotator_annotationNew_RAW"] = $newAnnotation;
 
-                $pObj->datamap[$table][$id]["semantify_it_lite_annotationNew_ID"] = $uid;
+                $pObj->datamap[$table][$id]["mayrhofen_annotator_annotationNew_ID"] = $uid;
 
             } //check if there is a new annotation id and it is a same as current annotation choosen one
             elseif ((isset($newID)) && ($newID != "") && ($newID != "0")) {
@@ -87,10 +87,10 @@ class ProcessCmdmap
 
                 //echo "#" . $uid;
 
-                $fieldArray["semantify_it_lite_annotationNew_ID"] = $uid;
-                $fieldArray["semantify_it_lite_annotationID"] = $uid;
-                $fieldArray["semantify_it_lite_annotationNew_RAW"] = $newAnnotation;
-                $pObj->datamap[$table][$id]["semantify_it_lite_annotationNew_ID"] = $uid;
+                $fieldArray["mayrhofen_annotator_annotationNew_ID"] = $uid;
+                $fieldArray["mayrhofen_annotator_annotationID"] = $uid;
+                $fieldArray["mayrhofen_annotator_annotationNew_RAW"] = $newAnnotation;
+                $pObj->datamap[$table][$id]["mayrhofen_annotator_annotationNew_ID"] = $uid;
             } else {
 
                 //echo 'nothing choosed';
@@ -122,18 +122,18 @@ class ProcessCmdmap
 
         // var_dump($fieldArray);
 
-        //echo $fieldArray['semantify_it_lite_annotationID'] . "ID";
+        //echo $fieldArray['mayrhofen_annotator_annotationID'] . "ID";
 
-        $pObj->datamap[$table][$id]['semantify_it_lite_continue'] = false;
+        $pObj->datamap[$table][$id]['mayrhofen_annotator_continue'] = false;
         //check fields if there is an ID
         if (
-            isset($fieldArray['semantify_it_lite_annotationNew_Name'])
-            && isset($fieldArray['semantify_it_lite_annotationNew_URL'])
-            && isset($fieldArray['semantify_it_lite_annotationNew_StepOne'])
-            && isset($fieldArray['semantify_it_lite_annotationNew_StepTwo'])
+            isset($fieldArray['mayrhofen_annotator_annotationNew_Name'])
+            && isset($fieldArray['mayrhofen_annotator_annotationNew_URL'])
+            && isset($fieldArray['mayrhofen_annotator_annotationNew_StepOne'])
+            && isset($fieldArray['mayrhofen_annotator_annotationNew_StepTwo'])
         ) {
             //set to continue true
-            $pObj->datamap[$table][$id]['semantify_it_lite_continue'] = true;
+            $pObj->datamap[$table][$id]['mayrhofen_annotator_continue'] = true;
         }
         //$this->hookDebug($status, $table, $id, $fieldArray, $pObj);
     }
