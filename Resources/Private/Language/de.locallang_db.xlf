@@ -61,7 +61,7 @@
                   <target>Bitte fügen Sie eine URL hinzu.</target>
             </trans-unit>
             <trans-unit id="configuration.description">
-                  <source>Website API key: Please input your Website API key to start using semantify.it on your webpage. If you don't have a API key please visit https://www.semantify.it</source>
+                  <source>Website API key: Please input your Website API key.</source>
                   <target>Website API key: Bitte fügen sie die Website API schlüssel hinzu.</target>
             </trans-unit>
             <trans-unit id="configuration.annotationByURL">
