@@ -25,10 +25,6 @@ class SemantifyItWrapper extends SemantifyIt
         if(in_array($_SERVER['HTTP_HOST'],$development)) {
             $this->setLive(false);
             $this->setError(true);
-            $this->setWebsiteApiKey("SkRwv0M2e");
-        }else{
-            //for mayrhoden
-            $this->setWebsiteApiKey("r1mVRAEpx");
         }
 
         if ($key != "") {
@@ -36,11 +32,10 @@ class SemantifyItWrapper extends SemantifyIt
             return;
         }
 
-        //$confArray = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['mayrhofen_annotator']);
-        //$websiteApiKey = $confArray['smtf.']['WebsiteApiKey'];
+        $confArray = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['mayrhofen_annotator']);
+        $websiteApiKey = $confArray['smtf.']['WebsiteApiKey'];
 
-        $websiteApiKey = "r1mVRAEpx";
-        //$this->setWebsiteApiKey($websiteApiKey);
+        $this->setWebsiteApiKey($websiteApiKey);
     }
 
 }
