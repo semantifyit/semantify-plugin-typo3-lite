@@ -6,7 +6,7 @@
     class tx_annotation_input
     {
         protected $sqlFROM = 'pages';
-        protected $sqlSELECT = 'mayrhofen_annotator_annotationID, semantify_it_lite_annotationNew_RAW';
+        protected $sqlSELECT = 'mayrhofen_annotator_annotationID, mayrhofen_annotator_annotationNew_RAW';
         protected $sqlID = 'mayrhofen_annotator_annotationID';
         protected $sqlRAW = 'mayrhofen_annotator_annotationNew_RAW';
 

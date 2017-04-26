@@ -22,7 +22,7 @@ class ProcessCmdmap
         //$this->hookDebug($status, $table, $id, $fieldArray, $pObj);
 
         //var_dump($pObj->datamap[$table][$id]);
-        //$fieldArray["mayrhofen_annotator_annotationNew_ID"] = @$pObj->datamap[$table][$id]["semantify_it_lite_annotationNew_ID"];
+        //$fieldArray["mayrhofen_annotator_annotationNew_ID"] = @$pObj->datamap[$table][$id]["mayrhofen_annotator_annotationNew_ID"];
         //$this->hookDebug($status, $table, $id, $fieldArray, $pObj);
 
         if (($status == 'update') && (($table == 'pages')||($table == 'pages_language_overlay'))) {

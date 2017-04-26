@@ -128,16 +128,16 @@ class SemantifyItWrapperController extends ActionController
     public function getAnnotationList()
     {
         $annotationList[] = array(
-            "LLL:EXT:mayrhofen_annotator/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_lite_annotationList",
+            "LLL:EXT:mayrhofen_annotator/Resources/Private/Language/locallang_db.xlf:pages.mayrhofen_annotator_annotationList",
             ""
         );
         $annotationList[] = array(
-            "LLL:EXT:mayrhofen_annotator/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_lite_annotationListNone",
+            "LLL:EXT:mayrhofen_annotator/Resources/Private/Language/locallang_db.xlf:pages.mayrhofen_annotator_annotationListNone",
             "0"
         );
 
         $annotationList[] = array(
-            "LLL:EXT:mayrhofen_annotator/Resources/Private/Language/locallang_db.xlf:pages.semantify_it_lite_annotationListNew",
+            "LLL:EXT:mayrhofen_annotator/Resources/Private/Language/locallang_db.xlf:pages.mayrhofen_annotator_annotationListNew",
             "1"
         );
 
