@@ -10,12 +10,12 @@
  ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = array(
-    'title' => 'semantify.it Lite',
-    'description' => 'Deploy annotations on your typo3 website.',
+    'title' => 'Mayrhofen Article-BlogPosting Annotator',
+    'description' => 'Annotations creator for Mayrhofen',
     'category' => 'plugin',
-    'author' => 'semantify.it',
-    'author_company' => 'semantify.it',
-    'author_email' => 'typo3@semantify.it',
+    'author' => 'STI Innsbruck',
+    'author_company' => 'STI Innsbruck',
+    'author_email' => 'richard.dvorsky@sti2.at',
     'state' => 'beta',
     'internal' => '',
     'uploadfolder' => '0',
