@@ -92,7 +92,7 @@
 
 
                 //if it is field not empty or with 0
-                if (!(($anno_id == "0") || ($anno_id == ""))) {
+                if ($anno_RAW!="") {
                     //$annotation = $Semantify->getAnnotation($anno_id);
                     $annotation = $anno_RAW;
                 } else if($annotationByURL==1) {
@@ -119,7 +119,7 @@
                 return;
             }
 
-            $semantify_text = '<!-- Great, right? Created with semantify.it -->
+            $semantify_text = '<!-- Great, right? Created with Mayrhofen Annotator -->
             ';
 
 
