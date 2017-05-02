@@ -43,8 +43,7 @@ abstract class AnnotationTemplate
 
         $author = '';
         if($fields["name"]!=""){
-            $author ='
-             "author": {
+            $author ='"author": {
                 "@type": "Person",
                 "name": "'.$fields["name"].'",
                 '.( $fields["email"]!="" ? '"email": "'.$fields["email"].'"' : '').'
@@ -53,8 +52,7 @@ abstract class AnnotationTemplate
 
         $about = '';
         if($fields["@about"]!=""){
-            $about ='
-             "about": {
+            $about ='"about": {
                 "@type": "'.$fields["@about"].'",
                 "name": "'.$fields["@aboutName"].'",
                 '.( $fields["@aboutURL"]!="" ? '"url": "'.$fields["@aboutURL"].'"' : '').'
