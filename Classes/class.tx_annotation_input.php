@@ -36,7 +36,12 @@
         {
             $currentPageId = $GLOBALS['TSFE']->id;
 
-            //
+            //var_dump($currentPageId);
+            //var_dump($GLOBALS['TSFE']->sys_language_uid);
+            //var_dump($GLOBALS['TSFE']->sys_language_content);
+
+
+
             /*
              * language support
              * if language != 0 sqlFrom=pages_language_overlay ... where paramter = pid , sys_langauge_uid
@@ -44,6 +49,7 @@
              */
             /* Philipp Parth added  begin */
             if ($GLOBALS['TSFE']->sys_language_uid != 0) {
+
                 $this->sqlFROM = "pages_language_overlay";
 
                 //read from database
@@ -63,6 +69,7 @@
             /* Philipp Parth added  end */
 
 
+            //var_dump($dbEntries);
 
             //check entries
             if (!isset($dbEntries) || $GLOBALS['TYPO3_DB']->sql_num_rows($dbEntries) == 0) {

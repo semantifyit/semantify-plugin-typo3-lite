@@ -10,7 +10,7 @@ CREATE TABLE pages (
   mayrhofen_annotator_annotationNew_StepTwo varchar(255) DEFAULT '' NOT NULL,
   mayrhofen_annotator_annotationNew_Name varchar(255) DEFAULT '' NOT NULL,
   mayrhofen_annotator_annotationNew_URL varchar(255) DEFAULT '' NOT NULL,
-  mayrhofen_annotator_annotationNew_RAW text NOT NULL
+  mayrhofen_annotator_annotationNew_RAW text
 );
 
 #
@@ -23,5 +23,5 @@ CREATE TABLE pages_language_overlay (
   mayrhofen_annotator_annotationNew_StepTwo varchar(255) DEFAULT '' NOT NULL,
   mayrhofen_annotator_annotationNew_Name varchar(255) DEFAULT '' NOT NULL,
   mayrhofen_annotator_annotationNew_URL varchar(255) DEFAULT '' NOT NULL,
-  mayrhofen_annotator_annotationNew_RAW text NOT NULL
+  mayrhofen_annotator_annotationNew_RAW text
 );

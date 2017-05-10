@@ -25,11 +25,13 @@ class ProcessCmdmap
         //$fieldArray["mayrhofen_annotator_annotationNew_ID"] = @$pObj->datamap[$table][$id]["mayrhofen_annotator_annotationNew_ID"];
         //$this->hookDebug($status, $table, $id, $fieldArray, $pObj);
 
-        if (($status == 'update') && (($table == 'pages')||($table == 'pages_language_overlay'))) {
+        if (($status == 'update') && (($table == 'pages') || ($table == 'pages_language_overlay'))) {
 
             //echo "PRE";
             //$this->hookDebug($status, $table, $id, $fieldArray, $pObj);
             //var_dump($pObj->datamap[$table][$id]);
+
+
 
             //if we dont have our fields
             if (!$pObj->datamap[$table][$id]['mayrhofen_annotator_continue']) {
@@ -120,7 +122,7 @@ class ProcessCmdmap
         \TYPO3\CMS\Core\DataHandling\DataHandler &$pObj
     ) {
 
-        // var_dump($fieldArray);
+         //var_dump($fieldArray);
 
         //echo $fieldArray['mayrhofen_annotator_annotationID'] . "ID";
 
@@ -131,6 +133,10 @@ class ProcessCmdmap
             && isset($fieldArray['mayrhofen_annotator_annotationNew_URL'])
             && isset($fieldArray['mayrhofen_annotator_annotationNew_StepOne'])
             && isset($fieldArray['mayrhofen_annotator_annotationNew_StepTwo'])
+            && ($fieldArray['mayrhofen_annotator_annotationNew_StepOne']!='')
+            && ($fieldArray['mayrhofen_annotator_annotationNew_StepTwo']!='')
+            && ($fieldArray['mayrhofen_annotator_annotationNew_Name']!='')
+
         ) {
             //set to continue true
             $pObj->datamap[$table][$id]['mayrhofen_annotator_continue'] = true;
