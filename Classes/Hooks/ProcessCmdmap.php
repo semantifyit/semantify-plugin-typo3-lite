@@ -25,7 +25,7 @@ class ProcessCmdmap
         //$fieldArray["mayrhofen_annotator_annotationNew_ID"] = @$pObj->datamap[$table][$id]["mayrhofen_annotator_annotationNew_ID"];
         //$this->hookDebug($status, $table, $id, $fieldArray, $pObj);
 
-        if (($status == 'update') && (($table == 'pages') || ($table == 'pages_language_overlay'))) {
+        if (($status == 'update') && (($table == 'pages') || ($table == 'pages_language_overlay') || ($table == 'tx_news_domain_model_news') )) {
 
             //echo "PRE";
             //$this->hookDebug($status, $table, $id, $fieldArray, $pObj);

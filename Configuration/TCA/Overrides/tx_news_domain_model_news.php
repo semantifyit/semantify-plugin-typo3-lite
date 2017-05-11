@@ -20,8 +20,8 @@ foreach ($fields as $field){
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
     $table, // Table name
     '--palette--;LLL:EXT:mayrhofen_annotator/Resources/Private/Language/locallang_db.xlf:pages.palette_title;mayrhofen_annotator', // Field list to add
-    '1', // List of specific types to add the field list to. (If empty, all type entries are affected)
-    'after:nav_title' // Insert fields before (default) or after one, or replace a field
+    '0', // List of specific types to add the field list to. (If empty, all type entries are affected)
+    'after:bodytext' // Insert fields before (default) or after one, or replace a field
 );
 
 
