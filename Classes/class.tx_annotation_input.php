@@ -35,70 +35,52 @@
         function main(&$params, &$that)
         {
             $currentPageId = $GLOBALS['TSFE']->id;
+            $news_id = -1;
 
-            //var_dump($currentPageId);
-            //var_dump($GLOBALS['TSFE']->sys_language_uid);
-            //var_dump($GLOBALS['TSFE']->sys_language_content);
-
-            /*
-             * language support
-             * if language != 0 sqlFrom=pages_language_overlay ... where paramter = pid , sys_langauge_uid
-             *
-             */
-            
-
-            /* Philipp Parth added  begin */
-            if ($GLOBALS['TSFE']->sys_language_uid != 0) {
+            //supporting for an id of the news
+            $get_para = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET();
+            if(isset($get_para['tx_news_pi1'])){
+                $news_id    =   $get_para['tx_news_pi1']['news'];
 
                 //check the news sources
                 $this->sqlFROM = "tx_news_domain_model_news";
 
                 //read from database
-                $dbEntries = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
-                    $this->sqlSELECT,
-                    $this->sqlFROM,
-                    'pid = ' . $currentPageId . ' AND sys_language_uid = ' . $GLOBALS['TSFE']->sys_language_uid
-                );
-
-                //if not than load normal
-                if (!isset($dbEntries) || $GLOBALS['TYPO3_DB']->sql_num_rows($dbEntries) == 0)
-                {
-                    $this->sqlFROM = "pages_language_overlay";
-
-                    //read from database
-                    $dbEntries = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
-                        $this->sqlSELECT,
-                        $this->sqlFROM,
-                        'pid = ' . $currentPageId . ' AND sys_language_uid = ' . $GLOBALS['TSFE']->sys_language_uid
-                    );
-                }
-
-            } else {
-
-                //check the news sources
-                $this->sqlFROM = "tx_news_domain_model_news";
+                $GLOBALS['TYPO3_DB']->store_lastBuiltQuery = 1;
 
                 $dbEntries = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
                     $this->sqlSELECT,
                     $this->sqlFROM,
-                    'uid = ' . $currentPageId
+                    'uid = ' . $news_id
                 );
 
-                //if not than load normal
-                if (!isset($dbEntries) || $GLOBALS['TYPO3_DB']->sql_num_rows($dbEntries) == 0)
-                {
+            }else {
 
-                    $this->sqlFROM = "pages";
+                if ($GLOBALS['TSFE']->sys_language_uid != 0) {
 
-                    $dbEntries = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
-                        $this->sqlSELECT,
-                        $this->sqlFROM,
-                        'uid = ' . $currentPageId
-                    );
+                        $this->sqlFROM = "pages_language_overlay";
+
+                        //read from database
+                        $dbEntries = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
+                            $this->sqlSELECT,
+                            $this->sqlFROM,
+                            'pid = ' . $currentPageId . ' AND sys_language_uid = ' . $GLOBALS['TSFE']->sys_language_uid
+                        );
+
+                } else {
+
+                        $this->sqlFROM = "pages";
+
+                        $dbEntries = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
+                            $this->sqlSELECT,
+                            $this->sqlFROM,
+                            'uid = ' . $currentPageId
+                        );
+
+
                 }
-
             }
-            /* Philipp Parth added  end */
+
 
 
             //var_dump($dbEntries);
