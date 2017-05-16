@@ -35,6 +35,9 @@
         function main(&$params, &$that)
         {
             $currentPageId = $GLOBALS['TSFE']->id;
+
+            $curent_url = \TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('TYPO3_REQUEST_URL');
+
             $news_id = -1;
 
             //supporting for an id of the news
@@ -46,7 +49,6 @@
                 $this->sqlFROM = "tx_news_domain_model_news";
 
                 //read from database
-                $GLOBALS['TYPO3_DB']->store_lastBuiltQuery = 1;
 
                 $dbEntries = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
                     $this->sqlSELECT,
@@ -121,8 +123,12 @@
                     $annotation = $Semantify->getAnnotationByURL($url);
                 }
 
+
+
+
                 //if it is field not empty or with 0
                 if (($annotation != "0") && ($annotation !== false) && ($annotation != "")) {
+                    $annotation = str_replace('%%url%%',$curent_url,$annotation);
                     $this->addAnnotation($params['pObj']->content, $annotation);
                 }
             }
