@@ -268,6 +268,16 @@ class SemantifyItWrapperController extends ActionController
      * @return array
      */
     private function createData($fields, $other){
+
+        $params = array();
+
+        $url = PagePathApi::getPagePath($data['id']);
+        if($other["table"]=="tx_news_domain_model_news"){
+            $params = '&tx_news_pi1[news]='.$other['id'].'&tx_news_pi1[controller]=News&tx_news_pi1[action]=detail';
+            $url = "%%url%%";
+        }
+
+
         $data = array();
         $data['dateModified'] = $other['dateModified'];
         $data['dateCreated'] = $other['dateCreated'];
@@ -276,7 +286,7 @@ class SemantifyItWrapperController extends ActionController
         $data['@aboutName'] = $fields['mayrhofen_annotator_annotationNew_Name'];
         $data['@aboutURL'] = $fields['mayrhofen_annotator_annotationNew_URL'];
         $data['id'] = $other['id'];
-        $data["url"] = PagePathApi::getPagePath($data['id']);
+        $data["url"] = $url;
         $data['headline'] = $fields['title'];
         $data['nav_title'] = $fields['nav_title'];
         $data['subtitle'] = $fields['subtitle'];
