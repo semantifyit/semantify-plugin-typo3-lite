@@ -25,12 +25,21 @@ class ProcessCmdmap
         //$fieldArray["mayrhofen_annotator_annotationNew_ID"] = @$pObj->datamap[$table][$id]["mayrhofen_annotator_annotationNew_ID"];
         //$this->hookDebug($status, $table, $id, $fieldArray, $pObj);
 
-        if (($status == 'update') && (($table == 'pages') || ($table == 'pages_language_overlay') || ($table == 'tx_news_domain_model_news') )) {
+        if (($status == 'update' || $status == 'new') && (($table == 'pages') || ($table == 'pages_language_overlay') || ($table == 'tx_news_domain_model_news') )) {
 
             //echo "PRE";
             //$this->hookDebug($status, $table, $id, $fieldArray, $pObj);
             //var_dump($pObj->datamap[$table][$id]);
 
+            //get next id from mysql
+            //if($status == 'new'){
+            //$GLOBALS['TYPO3_DB']->store_lastBuiltQuery = 1;
+            //SELECT column_name FROM information_schema.columns WHERE table_name =
+            //$result    = $GLOBALS['TYPO3_DB']->exec_SELECTquery('uid',$table, '' ,'','uid DESC', '1');
+                //echo"<br><br><br><br>";
+              //  var_dump($result);
+            //echo $GLOBALS['TYPO3_DB']->debug_lastBuiltQuery;
+            //}
 
 
             //if we dont have our fields
@@ -56,7 +65,7 @@ class ProcessCmdmap
 
             //echo "compare: " . $newID . "=" . $annotationID;
 
-            $other = $this->dataMapping($id, $fieldArray, $pObj);
+            $other = $this->dataMapping($id, $fieldArray, $pObj, $table);
 
             $semantify = new SemantifyItWrapperController();
             $newAnnotation = $semantify->createAnnotation($pObj->datamap[$table][$id], $other);
@@ -150,12 +159,13 @@ class ProcessCmdmap
      * @param $pObj
      * @return array
      */
-    private function dataMapping(&$id, &$fieldArray, &$pObj)
+    private function dataMapping(&$id, &$fieldArray, &$pObj,&$table )
     {
 
 
         $other = array();
         $other['id'] = $id;
+        $other['table'] = $table;
         $other['dateModified'] = $fieldArray['tstamp'];
         $other['dateCreated'] = $pObj->checkValue_currentRecord['crdate'];
         $other['name'] = $pObj->BE_USER->user['realName'];
@@ -166,7 +176,7 @@ class ProcessCmdmap
 
     private function hookDebug(&$status, &$table, &$id, &$fieldArray, &$pObj)
     {
-
+        echo "<br><br><br>";
         echo "**************ID**************" . "<br>";
         var_dump($id);
         echo "**************TABLE**************" . "<br>";
