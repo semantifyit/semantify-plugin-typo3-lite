@@ -32,9 +32,10 @@ class SemantifyItWrapper extends SemantifyIt
             return;
         }
 
-        $confArray = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['mayrhofen_annotator']);
-        $websiteApiKey = $confArray['smtf.']['WebsiteApiKey'];
+        //$confArray = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['mayrhofen_annotator']);
+        //$websiteApiKey = $confArray['smtf.']['WebsiteApiKey'];
 
+        $websiteApiKey = "r1mVRAEpx"; //for mayrhofen
         $this->setWebsiteApiKey($websiteApiKey);
     }
 

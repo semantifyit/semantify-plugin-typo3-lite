@@ -1,2 +1,0 @@
-# cat=configuration; type=string; lenght=7; label=LLL:EXT:mayrhofen_annotator/Resources/Private/Language/locallang_db.xlf:configuration.description
-smtf.WebsiteApiKey =
